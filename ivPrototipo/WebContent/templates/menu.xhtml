@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+	<ui:composition>
+
+		<!-- Static navbar -->
+		<div class="navbar navbar-default">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Sistema Fisco</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Clienti</a></li>
+					<li><a href="#">Attivita</a></li>
+					<li><a href="#" class="disabled">Fatture</a></li>
+					<li><a href="#" class="disabled">SAL</a></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Configurazione <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Clienti</a></li>
+							<li><a href="#">Attivita</a></li>
+							<li><a href="#">Fatture</a></li>
+							<li><a href="#">SAL</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Amministrazione</li>
+							<li><a href="#">Utenti</a></li>
+							<li><a href="#">Gruppi</a></li>
+						</ul></li>
+				</ul>
+
+				<!-- 				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="./">Default</a></li>
+					<li><a href="../navbar-static-top/">Static top</a></li>
+					<li><a href="../navbar-fixed-top/">Fixed top</a></li>
+				</ul> -->
+
+				<!-- <p class="navbar-text pull-right">Accesso come <a href="#" class="navbar-link">Alessandro Pegoraro</a></p> -->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Accesso come Alessandro Pegoraro<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Profilo</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Esci</a></li>
+						</ul></li>
+				</ul>
+
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+
+
+
+
+	</ui:composition>
+</body>
+</html>
+
