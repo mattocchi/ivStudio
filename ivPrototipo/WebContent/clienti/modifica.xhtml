@@ -32,7 +32,7 @@
 							<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
 
 							<div class="control-group">
-								<h:outputLabel value="ID Cliente" styleClass="control-label"></h:outputLabel>
+								<h:outputLabel value="Codice" styleClass="control-label"></h:outputLabel>
 								<div class="controls">
 									<h:inputText id="txtTo" value="#{beanCliente.elemento.codice }" styleClass="span1" placeholder=""></h:inputText>
 									<!-- <p class="help-block"></p> -->
@@ -44,7 +44,12 @@
 								<div class="controls">
 									<!-- <h:inputText id="txtCategoria" value="#{beanCliente.elemento.categoria }" styleClass="" placeholder=""></h:inputText> -->
 									<h:selectOneMenu value="#{beanCliente.elemento.categoria }">
-										<f:selectItem itemValue="1" itemLabel="1"></f:selectItem>
+										<f:selectItem itemValue="Societa' di capitali" itemLabel="Societa' di capitali"></f:selectItem>
+										<f:selectItem itemValue="Societa' di persone" itemLabel="Societa' di persone"></f:selectItem>
+										<f:selectItem itemValue="Altre forme giuridiche" itemLabel="Altre forme giuridiche"></f:selectItem>
+										<f:selectItem itemValue="Ditte individuali" itemLabel="Ditte individuali"></f:selectItem>
+										<f:selectItem itemValue="Professionisti" itemLabel="Professionisti"></f:selectItem>
+										<f:selectItem itemValue="Privati" itemLabel="Privati"></f:selectItem>
 									</h:selectOneMenu>
 								</div>
 							</div>
@@ -93,7 +98,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="control-group">
 								<h:outputLabel value="Recapito Fattura" styleClass="control-label"></h:outputLabel>
 								<div class="controls">
@@ -114,7 +119,7 @@
 										<h:inputText value="#{beanCliente.elemento.fatturaProvincia }" styleClass="input-xxsmall" placeholder=""></h:inputText>
 									</div>
 								</div>
-							</div>							
+							</div>
 
 							<div class="control-group">
 								<h:outputLabel value="" styleClass="control-label"></h:outputLabel>

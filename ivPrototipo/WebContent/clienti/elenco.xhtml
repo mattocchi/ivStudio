@@ -16,7 +16,9 @@
 					<div class="span12">
 						<fieldset>
 							<legend>
-								Clienti (<widget:itemsnum backbean="#{beanClienti}"></widget:itemsnum>)
+								Clienti (
+								<widget:itemsnum backbean="#{beanClienti}"></widget:itemsnum>
+								)
 							</legend>
 						</fieldset>
 					</div>
@@ -130,7 +132,7 @@
 					<h:dataTable value="#{beanClienti.elenco}" var="item" styleClass="table table-bordered table-striped table-hover">
 
 						<h:column>
-							<f:facet name="header">ID Cliente</f:facet>
+							<f:facet name="header">Codice</f:facet>
 							<h:outputText value="#{item.codice }"></h:outputText>
 						</h:column>
 
@@ -147,10 +149,6 @@
 							<h:outputText value="#{item.partitaIva }"></h:outputText>
 						</h:column>
 
-						<h:column>
-							<f:facet name="header">E-mail</f:facet>
-							<h:outputLink value="mailto:#{item.email}">#{item.email}</h:outputLink>
-						</h:column>
 
 						<h:column>
 							<f:facet name="header">Comune</f:facet>
@@ -158,13 +156,18 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Stato</f:facet>
+							<f:facet name="header">Telefono</f:facet>
+							<h:outputText value="#{item.telefono}"></h:outputText>
+						</h:column>
 
-							<!-- 							<h:outputText styleClass="label label-success" value="#{item.stato }" rendered="#{item.stato == 'Attivo' }"></h:outputText>
-							<h:outputText styleClass="label label-important" value="#{item.stato }" rendered="#{item.stato == 'Scaduto' }"></h:outputText>
-							<h:outputText styleClass="label label-warning" value="#{item.stato }" rendered="#{item.stato == 'Riserva' }"></h:outputText>
- -->
-							<!-- <span class="label label-important">Disattivo</span> -->
+						<h:column>
+							<f:facet name="header">Categoria</f:facet>
+							<h:outputText value="#{item.categoria}"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">E-mail</f:facet>
+							<h:outputLink value="mailto:#{item.email}">#{item.email}</h:outputLink>
 						</h:column>
 
 						<h:column>
