@@ -26,19 +26,25 @@
 							<!-- <input class="input-medium" id="appendedInputButtons" type="text" /> -->
 							<h:inputText value="#{beanConsumi.filtro.semeRicerca }" styleClass="input-medium"></h:inputText>
 							<!-- <button class="btn" type="button">Cerca1</button> -->
-							<h:commandLink styleClass="btn" value="Cerca" action="#{beanConsumi.actionCerca }"></h:commandLink>
+							<h:commandLink styleClass="btn defaultActionButton" value="Cerca" action="#{beanConsumi.actionCerca }"></h:commandLink>
 						</div>
 					</div>
 
 					<div class="span6">
 						<div class="pull-right">
 
-							<h:link id="btnNuovo" styleClass="btn" outcome="modifica">
+							<h:link id="btnNuovoFattura" styleClass="btn" outcome="modifica">
 								<i class="fam-add"></i>
-								<h:outputText value=" Registra una Ricarica"></h:outputText>
+								<h:outputText value=" Crea una Fattura"></h:outputText>
 								<f:param name="id" value="0"></f:param>
 							</h:link>
 
+							<h:link id="btnNuovoProforma" styleClass="btn" outcome="modifica">
+								<i class="fam-add"></i>
+								<h:outputText value=" Crea una Proforma"></h:outputText>
+								<f:param name="id" value="0"></f:param>
+							</h:link>
+							
 							<!--
 							<h:commandLink id="btnFiltri" styleClass="#{beanConsumi.filtri ? 'btn active' : 'btn'}" action="#{beanConsumi.actionFiltri }">
 								<i class="fam-find"></i>
