@@ -9,7 +9,7 @@ import it.attocchi.studio74.online.api.NotaAPI;
 import it.attocchi.studio74.online.api.NotaAPI.NotaTipoEnum;
 import it.attocchi.studio74.online.api.PostazioneAPI;
 import it.attocchi.studio74.online.entities.Consumo;
-import it.attocchi.studio74.online.entities.Contratto;
+import it.attocchi.studio74.online.entities.Attivita;
 import it.attocchi.studio74.online.entities.Licenza;
 import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.entities.Nota;
@@ -20,7 +20,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 
 public class StatoCliente {
-	private List<Contratto> contratti;
+	private List<Attivita> contratti;
 	private List<Consumo> consumi;
 	private List<Licenza> licenze;
 	private List<Postazione> postazioni;
@@ -34,11 +34,11 @@ public class StatoCliente {
 	List<Nota> note;
 	List<Nota> noteAssistenza;
 
-	public List<Contratto> getContratti() {
+	public List<Attivita> getContratti() {
 		return contratti;
 	}
 
-	public void setContratti(List<Contratto> contratti) {
+	public void setContratti(List<Attivita> contratti) {
 		this.contratti = contratti;
 	}
 
@@ -138,7 +138,7 @@ public class StatoCliente {
 			postazioni = new PostazioneAPI().listaByCliente(emf, utenteCorrente, idCliente);
 
 			for (Consumo consumo : consumi) {
-				if (consumo.getTipo().equals(ConsumoAPI.ConsumoTipoEnum.CONSUMO.name()))
+				if (consumo.getTipo().equals(ConsumoAPI.ConsumoTipoEnum.PROFORMA.name()))
 					consumoUsato = consumoUsato + Math.abs(consumo.getValore());
 				else
 					consumoCredito = consumoCredito + consumo.getValore();

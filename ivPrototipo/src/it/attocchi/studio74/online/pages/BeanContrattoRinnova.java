@@ -4,7 +4,7 @@ import it.attocchi.jsf2.converter.SelectItemConverter;
 import it.attocchi.jsf2.exceptions.PageAuthException;
 import it.attocchi.studio74.online.api.ContrattoAPI;
 import it.attocchi.studio74.online.api.LineaAPI;
-import it.attocchi.studio74.online.entities.Contratto;
+import it.attocchi.studio74.online.entities.Attivita;
 import it.attocchi.studio74.online.entities.Linea;
 import it.attocchi.studio74.online.jsf.PageBaseDetailS74;
 import it.attocchi.utils.ListUtils;
@@ -18,7 +18,7 @@ import javax.faces.model.SelectItem;
 
 @ManagedBean
 @ViewScoped
-public class BeanContrattoRinnova extends PageBaseDetailS74<Contratto> {
+public class BeanContrattoRinnova extends PageBaseDetailS74<Attivita> {
 
 	private List<SelectItem> clienti = new ArrayList<SelectItem>();;
 	private List<SelectItem> linee = new ArrayList<SelectItem>();
@@ -51,7 +51,7 @@ public class BeanContrattoRinnova extends PageBaseDetailS74<Contratto> {
 
 	@Override
 	protected void inizializeMembers() throws Exception {
-		this.clazz = Contratto.class;
+		this.clazz = Attivita.class;
 
 		this.elemento = new ContrattoAPI().nuovo(getCurrentUser(), 1);
 	}

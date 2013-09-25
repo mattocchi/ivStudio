@@ -10,7 +10,7 @@
 		<class>it.attocchi.studio74.online.entities.Modulo</class>
 		<class>it.attocchi.studio74.online.entities.Linea</class>
 		<class>it.attocchi.studio74.online.entities.Consumo</class>
-		<class>it.attocchi.studio74.online.entities.Contratto</class>
+		<class>it.attocchi.studio74.online.entities.Attivita</class>
 		<class>it.attocchi.studio74.online.entities.Nota</class>
 		<class>it.attocchi.studio74.online.entities.Licenza</class>
 		<class>it.attocchi.studio74.online.entities.VoceElenco</class>

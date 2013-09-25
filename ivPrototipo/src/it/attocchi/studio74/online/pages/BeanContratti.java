@@ -1,9 +1,9 @@
 package it.attocchi.studio74.online.pages;
 
 import it.attocchi.studio74.online.api.LineaAPI;
-import it.attocchi.studio74.online.entities.Contratto;
+import it.attocchi.studio74.online.entities.Attivita;
 import it.attocchi.studio74.online.entities.Linea;
-import it.attocchi.studio74.online.filters.ContrattoFiltro;
+import it.attocchi.studio74.online.filters.AttivitaFiltro;
 import it.attocchi.studio74.online.jsf.PageBaseListS74;
 
 import java.util.ArrayList;
@@ -14,12 +14,12 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class BeanContratti extends PageBaseListS74<Contratto, ContrattoFiltro> {
+public class BeanContratti extends PageBaseListS74<Attivita, AttivitaFiltro> {
 
 	@Override
 	protected void inizializeMembers() throws Exception {
-		this.clazz = Contratto.class;
-		this.filtro = new ContrattoFiltro();
+		this.clazz = Attivita.class;
+		this.filtro = new AttivitaFiltro();
 
 		filtro.setPageNumber(0);
 		filtro.setLimit(50);

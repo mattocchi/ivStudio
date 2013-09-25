@@ -63,6 +63,10 @@ public class NominativoAPI extends CrudApi<Nominativo> {
 	public List<Nominativo> listaContatti(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
 		return JpaController.callFind(emf, Nominativo.class, new NominativoFiltro(RuoloContattoEnum.CONTATTO));
 	}
+	
+	public List<Nominativo> listaUtenti(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
+		return JpaController.callFind(emf, Nominativo.class, new NominativoFiltro(RuoloContattoEnum.UTENTE));
+	}	
 
 	public Nominativo cerca(EntityManagerFactory emf, long clienteId) throws Exception {
 		Nominativo res = JpaController.callFindById(emf, Nominativo.class, clienteId);

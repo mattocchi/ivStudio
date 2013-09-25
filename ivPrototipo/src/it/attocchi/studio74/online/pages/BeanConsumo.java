@@ -55,7 +55,7 @@ public class BeanConsumo extends PageBaseDetailS74<Consumo> {
 	protected void inizializeMembers() throws Exception {
 		this.clazz = Consumo.class;
 
-		this.elemento = Consumo.createNew(getCurrentUser(), ConsumoTipoEnum.RICARICA);
+		this.elemento = Consumo.createNew(getCurrentUser(), ConsumoTipoEnum.FATTURA);
 	}
 
 	@Override

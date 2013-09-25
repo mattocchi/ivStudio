@@ -13,8 +13,8 @@ import javax.persistence.EntityManagerFactory;
 public class ConsumoAPI extends CrudApi<Consumo> {
 
 	public enum ConsumoTipoEnum {
-		RICARICA,
-		CONSUMO
+		FATTURA,
+		PROFORMA
 	}
 
 	public List<Consumo> lista(EntityManagerFactory emf, Nominativo currentUser) throws Exception {

@@ -2,7 +2,7 @@ package it.attocchi.studio74.online.pages;
 
 import it.attocchi.jsf2.exceptions.PageAuthException;
 import it.attocchi.studio74.online.api.ContrattoAPI;
-import it.attocchi.studio74.online.entities.Contratto;
+import it.attocchi.studio74.online.entities.Attivita;
 import it.attocchi.studio74.online.jsf.PageBaseDetailS74;
 import it.attocchi.utils.ListUtils;
 
@@ -14,7 +14,7 @@ import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class BeanContratto extends PageBaseDetailS74<Contratto> {
+public class BeanAttivita extends PageBaseDetailS74<Attivita> {
 
 	private long clienteSelezionato;
 	private List<String> lineeSelezionate = new ArrayList<String>();
@@ -29,7 +29,7 @@ public class BeanContratto extends PageBaseDetailS74<Contratto> {
 
 	@Override
 	protected void inizializeMembers() throws Exception {
-		this.clazz = Contratto.class;
+		this.clazz = Attivita.class;
 
 		this.elemento = new ContrattoAPI().nuovo(getCurrentUser(), 1);
 	}

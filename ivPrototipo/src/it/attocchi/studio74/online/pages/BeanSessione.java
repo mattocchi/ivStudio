@@ -19,11 +19,14 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class BeanSessione extends PageBaseS74 {
 
-	private List<SelectItem> clienti = new ArrayList<SelectItem>();;
+	private List<SelectItem> clienti = new ArrayList<SelectItem>();
 	private List<SelectItem> linee = new ArrayList<SelectItem>();
 	private List<SelectItem> licenzaPostazioneTipo = new ArrayList<SelectItem>();
 	private List<SelectItem> contrattoVersione = new ArrayList<SelectItem>();
 	private List<SelectItem> notaTipo = new ArrayList<SelectItem>();
+	private List<SelectItem> utentiSelect = new ArrayList<SelectItem>();
+	private List<Nominativo> utenti = new ArrayList<Nominativo>();
+	private List<SelectItem> attivitaTipo = new ArrayList<SelectItem>();
 
 	public List<SelectItem> getClienti() {
 		return clienti;
@@ -45,10 +48,25 @@ public class BeanSessione extends PageBaseS74 {
 		return notaTipo;
 	}
 
+	public List<Nominativo> getUtenti() {
+		return utenti;
+	}
+
+	public List<SelectItem> getUtentiSelect() {
+		return utentiSelect;
+	}
+
+	public List<SelectItem> getAttivitaTipo() {
+		return attivitaTipo;
+	}
+
 	@Override
 	protected void init2() throws Exception {
 		List<Nominativo> nominativi = new NominativoAPI().listaContatti(getEmfShared(), getCurrentUser());
 		clienti = SelectItemConverter.convert(nominativi);
+
+		List<Nominativo> utenti = new NominativoAPI().listaUtenti(getEmfShared(), getCurrentUser());
+		utentiSelect = SelectItemConverter.convert(utenti);
 
 		List<Linea> listaLinee = new LineaAPI().lista(getEmfShared(), getCurrentUser());
 		linee = SelectItemConverter.convert(listaLinee);
@@ -66,6 +84,16 @@ public class BeanSessione extends PageBaseS74 {
 		notaTipo.add(new SelectItem("NOTA", "Nota"));
 		notaTipo.add(new SelectItem("TELEFONATA", "Telefonata"));
 		notaTipo.add(new SelectItem("EMAIL", "Email"));
+
+		attivitaTipo.add(new SelectItem("CONSULENZA", "000 - Consulenza Ordinaria"));
+		attivitaTipo.add(new SelectItem("DICHIARAZIONI", "300 - Dichiarazioni"));
+		attivitaTipo.add(new SelectItem("Bilanci", "400 - Bilanci"));
+		attivitaTipo.add(new SelectItem("Pratiche Telematiche", "500 - Pratiche Telematica"));
+		attivitaTipo.add(new SelectItem("Pareri", "600 - Pareri"));
+		attivitaTipo.add(new SelectItem("Perizie", "700 - Perizie"));
+		attivitaTipo.add(new SelectItem("Consulenza Straordinaria", "800 - Consulenza Straordinaria"));
+		attivitaTipo.add(new SelectItem("Collegi e Revisione", "900 - Collegi e Revisione"));
+		attivitaTipo.add(new SelectItem("Contabilita", "999 - Contabilita"));
 	}
 
 	@Override

@@ -18,11 +18,11 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "s74_contratti")
-public class Contratto extends AbstractEntityMarksWithIdLong {
+public class Attivita extends AbstractEntityMarksWithIdLong {
 
-//	protected Contratto() {
-//		super();
-//	}
+	// protected Contratto() {
+	// super();
+	// }
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,6 +68,13 @@ public class Contratto extends AbstractEntityMarksWithIdLong {
 	private boolean firmato;
 	@Column(name = "versione")
 	private String versione;
+
+	@Column(name = "descrizione")
+	@Lob
+	private String descrizione;
+
+	@Column(name = "tipologia")
+	private String tipologia;
 
 	@Embedded
 	private EntityMarks entityMarks;
@@ -240,6 +247,22 @@ public class Contratto extends AbstractEntityMarksWithIdLong {
 
 	public void setVersione(String versione) {
 		this.versione = versione;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public String getTipologia() {
+		return tipologia;
+	}
+
+	public void setTipologia(String tipologia) {
+		this.tipologia = tipologia;
 	}
 
 }

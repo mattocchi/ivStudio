@@ -1,10 +1,10 @@
 package it.attocchi.studio74.online.api;
 
 import it.attocchi.jpa2.JpaController;
-import it.attocchi.studio74.online.entities.Contratto;
+import it.attocchi.studio74.online.entities.Attivita;
 import it.attocchi.studio74.online.entities.Licenza;
 import it.attocchi.studio74.online.entities.Nominativo;
-import it.attocchi.studio74.online.filters.ContrattoFiltro;
+import it.attocchi.studio74.online.filters.AttivitaFiltro;
 import it.attocchi.utils.DateUtilsLT;
 import it.attocchi.utils.ListUtils;
 
@@ -13,16 +13,16 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 
-public class ContrattoAPI extends S74Crud<Contratto> {
+public class ContrattoAPI extends S74Crud<Attivita> {
 
-	public List<Contratto> lista(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
-		return JpaController.callFind(emf, Contratto.class, new ContrattoFiltro());
+	public List<Attivita> lista(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
+		return JpaController.callFind(emf, Attivita.class, new AttivitaFiltro());
 	}
 
-	public Contratto rinnovoPrepara(EntityManagerFactory emf, Nominativo currentUser, long idRinnovo) throws Exception {
-		Contratto rinnovato = null;
+	public Attivita rinnovoPrepara(EntityManagerFactory emf, Nominativo currentUser, long idRinnovo) throws Exception {
+		Attivita rinnovato = null;
 
-		Contratto contrattoDaRinnovare = JpaController.callFindById(emf, Contratto.class, idRinnovo);
+		Attivita contrattoDaRinnovare = JpaController.callFindById(emf, Attivita.class, idRinnovo);
 
 		if (contrattoDaRinnovare != null) {
 			rinnovato = new ContrattoAPI().nuovo(currentUser, contrattoDaRinnovare.getLicenzaNumero());
@@ -44,42 +44,42 @@ public class ContrattoAPI extends S74Crud<Contratto> {
 
 	}
 
-	public void rinnovoSalva(EntityManagerFactory emf, Nominativo currentUser, Contratto rinnovata, List<String> lineeId) throws Exception {
+	public void rinnovoSalva(EntityManagerFactory emf, Nominativo currentUser, Attivita rinnovata, List<String> lineeId) throws Exception {
 
 		salva(emf, currentUser, rinnovata, lineeId);
 
-		Contratto obsoleta = JpaController.callFindById(emf, Contratto.class, rinnovata.getContrattoPadreId());
+		Attivita obsoleta = JpaController.callFindById(emf, Attivita.class, rinnovata.getContrattoPadreId());
 		obsoleta.setObsoleto(true);
 
 		JpaController.callUpdate(emf, obsoleta);
 
 	}
 
-	public void salva(EntityManagerFactory emf, Nominativo currentUser, Contratto elemento, List<String> lineeId) throws Exception {
+	public void salva(EntityManagerFactory emf, Nominativo currentUser, Attivita elemento, List<String> lineeId) throws Exception {
 		elemento.setLinee(ListUtils.toCommaSepared(lineeId));
 		salva(emf, currentUser, elemento);
 	}
 
-	public List<Contratto> listaByCliente(EntityManagerFactory emf, Nominativo currentUser, long idCliente) throws Exception {
-		ContrattoFiltro f = new ContrattoFiltro();
+	public List<Attivita> listaByCliente(EntityManagerFactory emf, Nominativo currentUser, long idCliente) throws Exception {
+		AttivitaFiltro f = new AttivitaFiltro();
 		f.setClienteId(idCliente);
-		return JpaController.callFind(emf, Contratto.class, f);
+		return JpaController.callFind(emf, Attivita.class, f);
 	}
 
-	public List<Contratto> listaRecenti(EntityManagerFactory emf, Nominativo currentUser, int limite) throws Exception {
-		ContrattoFiltro filtro = new ContrattoFiltro();
+	public List<Attivita> listaRecenti(EntityManagerFactory emf, Nominativo currentUser, int limite) throws Exception {
+		AttivitaFiltro filtro = new AttivitaFiltro();
 		filtro.setLimit(limite);
-		return JpaController.callFind(emf, Contratto.class, filtro);
+		return JpaController.callFind(emf, Attivita.class, filtro);
 	}
 
 	@Override
-	public void salvaPre(EntityManagerFactory emf, Nominativo utente, Contratto elemento) throws Exception {
+	public void salvaPre(EntityManagerFactory emf, Nominativo utente, Attivita elemento) throws Exception {
 		Nominativo cliente = new NominativoAPI().cerca(emf, elemento.getClienteId());
 		elemento.setClienteDescrizione(cliente.getNomeVisualizzato());
 	}
 
 	@Override
-	public void salvaPost(EntityManagerFactory emf, Nominativo utente, Contratto elemento, boolean nuovoInserimento) throws Exception {
+	public void salvaPost(EntityManagerFactory emf, Nominativo utente, Attivita elemento, boolean nuovoInserimento) throws Exception {
 		if (nuovoInserimento) {
 			/* Creaiamo la nuova postazione di default per questo contratto */
 			LicenzaAPI postazioneApi = new LicenzaAPI();
@@ -89,8 +89,8 @@ public class ContrattoAPI extends S74Crud<Contratto> {
 		}
 	}
 
-	public Contratto nuovo(Nominativo utenteCorrente, long licenzaNumero) {
-		Contratto nuovo = new Contratto();
+	public Attivita nuovo(Nominativo utenteCorrente, long licenzaNumero) {
+		Attivita nuovo = new Attivita();
 
 		nuovo.setRivenditoreId(utenteCorrente.getRivenditoreId());
 

@@ -37,13 +37,13 @@
 
 							<h:link id="btnNuovo" styleClass="btn" outcome="modifica">
 								<i class="fam-add"></i>
-								<h:outputText value=" Registra Contratto"></h:outputText>
+								<h:outputText value=" Nuova Attivita"></h:outputText>
 								<f:param name="id" value="0"></f:param>
 							</h:link>
 
 							<h:commandLink id="btnFiltri" styleClass="#{beanContratti.filtri ? 'btn active' : 'btn'}" action="#{beanContratti.actionFiltri }">
 								<i class="fam-find"></i>
-								<h:outputText value=" Filtri Avanzati"></h:outputText>
+								<h:outputText value=" Ricerca Avanzata"></h:outputText>
 								<f:ajax execute="" render="rowFiltri" />
 							</h:commandLink>
 						</div>
@@ -58,7 +58,7 @@
 							<div class="span4">
 								<div class="well">
 									<ul class="nav nav-list">
-										<li class="nav-header">Contratti</li>
+										<li class="nav-header">Attivita</li>
 										<li class="#{not beanContratti.filtro.includiObsoleti ? 'active' : ''}">
 											<!-- <a href="#">Attivi</a> -->
 											<h:commandLink action="#{beanContratti.actionReload() }">Attivi
@@ -78,7 +78,7 @@
 									<ul class="nav nav-list">
 										<li class="nav-header">Scadenza</li>
 										<li class="active">
-											<a href="#">Tutti</a>
+											<a href="#">Tutte</a>
 										</li>
 										<li>
 											<a href="#">Scadono il prossimo mese</a>
@@ -92,22 +92,16 @@
 							<div class="span4">
 								<div class="well">
 									<ul class="nav nav-list">
-										<li class="nav-header">Utilizzo</li>
+										<li class="nav-header">Condiviso</li>
 										<li class="active">
 											<a href="#">Tutti</a>
 										</li>
+										<ui:repeat var="utente" value="#{beanSessione.utenti }">
 										<li>
-											<a href="#">Postazione</a>
+											<a href="#">#{utente.nomeVisualizzato }</a>
 										</li>
-										<li>
-											<a href="#">Rete</a>
-										</li>
-										<li>
-											<a href="#">Terminal</a>
-										</li>
-										<li>
-											<a href="#">Consumo</a>
-										</li>
+										</ui:repeat>
+									
 									</ul>
 								</div>
 							</div>

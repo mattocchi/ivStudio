@@ -1,8 +1,8 @@
 package it.attocchi.studio74.online.filters;
 
 import it.attocchi.jpa2.JPAEntityFilter;
-import it.attocchi.studio74.online.entities.Contratto;
-import it.attocchi.studio74.online.entities.Contratto_;
+import it.attocchi.studio74.online.entities.Attivita;
+import it.attocchi.studio74.online.entities.Attivita_;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class ContrattoFiltro extends JPAEntityFilter<Contratto> {
+public class AttivitaFiltro extends JPAEntityFilter<Attivita> {
 
 	private boolean soloRinnovi;
 	private boolean includiObsoleti;
@@ -39,11 +39,11 @@ public class ContrattoFiltro extends JPAEntityFilter<Contratto> {
 	}
 
 	@Override
-	public void buildWhere(EntityManagerFactory emf, List<Predicate> predicateList, CriteriaQuery<Contratto> criteriaQuery, CriteriaBuilder criteriaBuilder, Root<Contratto> root) throws Exception {
+	public void buildWhere(EntityManagerFactory emf, List<Predicate> predicateList, CriteriaQuery<Attivita> criteriaQuery, CriteriaBuilder criteriaBuilder, Root<Attivita> root) throws Exception {
 
 		if (StringUtils.isNotBlank(semeRicerca)) {
 
-			// Predicate p1 = criteriaBuilder.like(root.get(Contratto_.),
+			// Predicate p1 = criteriaBuilder.like(root.get(Attivita_.),
 			// getSemeRicercaForLike());
 			//
 			// Predicate or = criteriaBuilder.or(p1);
@@ -52,7 +52,7 @@ public class ContrattoFiltro extends JPAEntityFilter<Contratto> {
 
 		if (!includiObsoleti) {
 
-			predicateList.add(criteriaBuilder.equal(root.get(Contratto_.obsoleto), false));
+			predicateList.add(criteriaBuilder.equal(root.get(Attivita_.obsoleto), false));
 
 			// LicenzaFiltro filtroRinnovi = new LicenzaFiltro();
 			// // filtroRinnovi.setSoloRinnovi(true);
@@ -82,29 +82,29 @@ public class ContrattoFiltro extends JPAEntityFilter<Contratto> {
 			// ids.addAll(ch.lambdaj.Lambda.project(map.values(), Long.class,
 			// ch.lambdaj.Lambda.on(Licenza.class).getId()));
 			// /* Filtro solo per Questi */
-			// predicateList.add(root.get(Contratto_.id).in(ids));
+			// predicateList.add(root.get(Attivita_.id).in(ids));
 
 		}
 
 		if (soloRinnovi) {
-			predicateList.add(root.get(Contratto_.contrattoPadreId).isNotNull());
-			predicateList.add(criteriaBuilder.greaterThan(root.get(Contratto_.contrattoPadreId), 0l));
+			predicateList.add(root.get(Attivita_.contrattoPadreId).isNotNull());
+			predicateList.add(criteriaBuilder.greaterThan(root.get(Attivita_.contrattoPadreId), 0l));
 		}
 
 		if (clienteId > 0) {
-			predicateList.add(criteriaBuilder.equal(root.get(Contratto_.clienteId), clienteId));
+			predicateList.add(criteriaBuilder.equal(root.get(Attivita_.clienteId), clienteId));
 		}
 	}
 
 	@Override
-	public void buildSort(List<Order> orderList, CriteriaQuery<Contratto> criteriaQuery, CriteriaBuilder criteriaBuilder, Root<Contratto> root) throws Exception {
+	public void buildSort(List<Order> orderList, CriteriaQuery<Attivita> criteriaQuery, CriteriaBuilder criteriaBuilder, Root<Attivita> root) throws Exception {
 
-		Order a = criteriaBuilder.asc(root.get(Contratto_.clienteDescrizione));
-		Order b = criteriaBuilder.asc(root.get(Contratto_.licenzaNumero));
-		Order c = criteriaBuilder.desc(root.get(Contratto_.consumoDataInizio));
+		Order a = criteriaBuilder.asc(root.get(Attivita_.clienteDescrizione));
+		Order b = criteriaBuilder.asc(root.get(Attivita_.licenzaNumero));
+		Order c = criteriaBuilder.desc(root.get(Attivita_.consumoDataInizio));
 
 		// Order b =
-		// criteriaBuilder.desc(root.get(Contratto_.entityMarks).get(EntityMarksUUID_.dataCreazione));
+		// criteriaBuilder.desc(root.get(Attivita_.entityMarks).get(EntityMarksUUID_.dataCreazione));
 		orderList.add(a);
 		orderList.add(b);
 		orderList.add(c);

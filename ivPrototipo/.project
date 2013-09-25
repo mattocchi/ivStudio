@@ -3,7 +3,6 @@
 	<name>ivPrototipo</name>
 	<comment></comment>
 	<projects>
-		<project>WebAppCommon</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
