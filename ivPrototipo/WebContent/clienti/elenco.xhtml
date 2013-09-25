@@ -62,53 +62,33 @@
 								<div class="well">
 									<ul class="nav nav-list">
 										<li class="nav-header">Clienti</li>
-										<li class="active">
-											<a href="#">Tutti</a>
-										</li>
-										<li>
-											<a href="#">Attivi</a>
-										</li>
-										<li>
-											<a href="#">Scaduti</a>
-										</li>
+										<li class="active"><a href="#">Tutti</a></li>
+										<li><a href="#">Attivi</a></li>
+										<li><a href="#">Non Attivi</a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="span4">
 								<div class="well">
 									<ul class="nav nav-list">
-										<li class="nav-header">Licenze</li>
-										<li class="active">
-											<a href="#">Tutte</a>
-										</li>
-										<li>
-											<a href="#">Scadono il prossimo mese</a>
-										</li>
-										<li>
-											<a href="#">Scadono questo mese</a>
-										</li>
+										<li class="nav-header">Categoria</li>
+
+										<li class="active"><a href="#">Societa' di capitali</a></li>
+										<li><a href="#">Societa' di persone</a></li>
+										<li><a href="#">Altra forma giuridica</a></li>
+										<li><a href="#">Ditta individuale</a></li>
+										<li><a href="#">Professionista</a></li>
+										<li><a href="#">Privato</a></li>
 									</ul>
 								</div>
 							</div>
 							<div class="span4">
 								<div class="well">
 									<ul class="nav nav-list">
-										<li class="nav-header">Utilizzo</li>
-										<li class="active">
-											<a href="#">Tutti</a>
-										</li>
-										<li>
-											<a href="#">Postazione</a>
-										</li>
-										<li>
-											<a href="#">Rete</a>
-										</li>
-										<li>
-											<a href="#">Terminal</a>
-										</li>
-										<li>
-											<a href="#">Consumo</a>
-										</li>
+										<li class="nav-header">Tipologia</li>
+										<li class="active"><a href="#">Tutti</a></li>
+										<li><a href="#">Persona Fisica</a></li>
+										<li><a href="#">Persona Giuridica</a></li>
 									</ul>
 								</div>
 							</div>
@@ -190,8 +170,7 @@
 								<ul class="dropdown-menu">
 									<!-- dropdown menu links -->
 									<li>
-										<!-- <a tabindex="-1" href="#">Apri</a> -->
-										<h:link tabindex="-1" outcome="scheda">
+										<!-- <a tabindex="-1" href="#">Apri</a> --> <h:link tabindex="-1" outcome="scheda">
 											<f:param name="id" value="#{item.id }"></f:param>
 											<i class="icon-folder-open"></i> Apri Scheda
 										</h:link>
@@ -199,12 +178,27 @@
 
 									</li>
 									<li class="divider"></li>
-									<li>
-										<h:link tabindex="-1" outcome="modifica">
+									<li><h:link tabindex="-1" outcome="modifica">
 											<f:param name="id" value="#{item.id }"></f:param>
 											<i class="fam-application-form-edit"></i> Modifica
-										</h:link>
-									</li>
+										</h:link></li>
+
+									<li><h:link tabindex="-1">
+											<f:param name="id" value="#{item.id }"></f:param>
+											<i class="icon-time"></i> Nuova Attività
+										</h:link></li>
+
+									<li><h:link tabindex="-1">
+											<f:param name="id" value="#{item.id }"></f:param>
+											<i class="icon-tasks"></i> Nuova Fattura
+										</h:link></li>
+										
+									<li class="divider"></li>
+									
+									<li><h:link tabindex="-1">
+											<f:param name="id" value="#{item.id }"></f:param>
+											<i class="fam-cancel"></i> Elimina
+										</h:link></li>									
 								</ul>
 							</div>
 

@@ -38,19 +38,19 @@
 									<!-- <p class="help-block"></p> -->
 								</div>
 							</div>
-
+							
 							<div class="control-group">
 								<h:outputLabel value="Categoria" styleClass="control-label"></h:outputLabel>
 								<div class="controls">
-									<!-- <h:inputText id="txtCategoria" value="#{beanCliente.elemento.categoria }" styleClass="" placeholder=""></h:inputText> -->
 									<h:selectOneMenu value="#{beanCliente.elemento.categoria }">
 										<f:selectItem itemValue="Societa' di capitali" itemLabel="Societa' di capitali"></f:selectItem>
 										<f:selectItem itemValue="Societa' di persone" itemLabel="Societa' di persone"></f:selectItem>
-										<f:selectItem itemValue="Altre forme giuridiche" itemLabel="Altre forme giuridiche"></f:selectItem>
-										<f:selectItem itemValue="Ditte individuali" itemLabel="Ditte individuali"></f:selectItem>
-										<f:selectItem itemValue="Professionisti" itemLabel="Professionisti"></f:selectItem>
-										<f:selectItem itemValue="Privati" itemLabel="Privati"></f:selectItem>
+										<f:selectItem itemValue="Altra forma giuridica" itemLabel="Altra forma giuridica"></f:selectItem>
+										<f:selectItem itemValue="Ditta individuale" itemLabel="Ditta individuale"></f:selectItem>
+										<f:selectItem itemValue="Professionista" itemLabel="Professionista"></f:selectItem>
+										<f:selectItem itemValue="Privato" itemLabel="Privato"></f:selectItem>
 									</h:selectOneMenu>
+									<h:outputText value="Persona Giuridica" styleClass="fontBold" style="padding-left: 10px;"/>
 								</div>
 							</div>
 
