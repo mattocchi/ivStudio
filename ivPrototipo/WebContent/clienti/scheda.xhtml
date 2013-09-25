@@ -126,8 +126,7 @@
 								<div class="row-fluid">
 									<div class="span6">
 										<h:selectOneMenu styleClass="span12" value="#{beanCliente.nuovaNota.tipo}">
-											<f:selectItem itemValue="NOTA" itemLabel="Nota"></f:selectItem>
-											<f:selectItem itemValue="ASSISTENZA" itemLabel="Assistenza"></f:selectItem>
+											<f:selectItems value="#{beanSessione.notaTipo }"></f:selectItems>
 										</h:selectOneMenu>
 
 									</div>

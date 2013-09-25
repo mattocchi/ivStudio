@@ -23,6 +23,7 @@ public class BeanSessione extends PageBaseS74 {
 	private List<SelectItem> linee = new ArrayList<SelectItem>();
 	private List<SelectItem> licenzaPostazioneTipo = new ArrayList<SelectItem>();
 	private List<SelectItem> contrattoVersione = new ArrayList<SelectItem>();
+	private List<SelectItem> notaTipo = new ArrayList<SelectItem>();
 
 	public List<SelectItem> getClienti() {
 		return clienti;
@@ -38,6 +39,10 @@ public class BeanSessione extends PageBaseS74 {
 
 	public List<SelectItem> getContrattoVersione() {
 		return contrattoVersione;
+	}
+
+	public List<SelectItem> getNotaTipo() {
+		return notaTipo;
 	}
 
 	@Override
@@ -57,6 +62,10 @@ public class BeanSessione extends PageBaseS74 {
 		contrattoVersione.add(new SelectItem("Contratto Rev.3", "Contratto Rev.3"));
 		contrattoVersione.add(new SelectItem("Contratto Rev.2", "Contratto Rev.2"));
 		contrattoVersione.add(new SelectItem("Contratto Rev.1", "Contratto Rev.1"));
+
+		notaTipo.add(new SelectItem("NOTA", "Nota"));
+		notaTipo.add(new SelectItem("TELEFONATA", "Telefonata"));
+		notaTipo.add(new SelectItem("EMAIL", "Email"));
 	}
 
 	@Override
@@ -73,7 +82,7 @@ public class BeanSessione extends PageBaseS74 {
 		}
 		return res;
 	}
-	
+
 	public Nominativo utente(long idUtente) {
 		Nominativo res = null;
 		try {
@@ -82,6 +91,6 @@ public class BeanSessione extends PageBaseS74 {
 			addErrorMessage(ex);
 		}
 		return res;
-	}	
+	}
 
 }
