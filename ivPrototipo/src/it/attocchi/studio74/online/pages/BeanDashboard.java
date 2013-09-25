@@ -86,7 +86,7 @@ public class BeanDashboard extends PageBaseS74 {
 			pieModel.set(attivi.getSize() + " Attivi", attivi.getSize());
 		// pieModel.set("Scadenza", 5);
 		if (scaduti != null)
-			pieModel.set(scaduti.getSize() + " Scaduti", scaduti.getSize());
+			pieModel.set(scaduti.getSize() + " Non Attivi", scaduti.getSize());
 
 		/* CONSUMI */
 		List<Consumo> consumi = consumoAPI.lista(getEmfShared(), getCurrentUser());
@@ -98,9 +98,9 @@ public class BeanDashboard extends PageBaseS74 {
 		pieModelConsumi = new PieChartModel();
 
 		if (ricariche != null)
-			pieModelConsumi.set(ricariche.getSize() + " Ricarica", ricariche.getSize());
+			pieModelConsumi.set(ricariche.getSize() + " Completate", ricariche.getSize());
 		if (usato != null)
-			pieModelConsumi.set(usato.getSize() + " Consumato", usato.getSize());
+			pieModelConsumi.set(usato.getSize() + " Non Completate", usato.getSize());
 
 		/* ULTIMI */
 		ultimiContratti = contrattoAPI.listaRecenti(getEmfShared(), getCurrentUser(), 10);

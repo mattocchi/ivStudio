@@ -27,56 +27,34 @@
 
 					<div class="span6">
 
-						<p:pieChart id="chartContratti" value="#{beanDashboard.pieModel}" legendPosition="w" title="#{beanDashboard.contrattiNum } Contratti registrati"
+						<p:pieChart id="chartContratti" value="#{beanDashboard.pieModel}" legendPosition="w" title="#{beanDashboard.contrattiNum } Contatti inseriti"
 							style="width:400px;height:300px" />
 
 
-						<h4>Ultimi Contratti</h4>
+						<h4>Ultimi Contatti</h4>
 						<h:dataTable value="#{beanDashboard.ultimiContratti }" var="item" styleClass="table">
 							<h:column>
 								<f:facet name="header">Cliente</f:facet>
 								<h:link outcome="/clienti/scheda" value="#{beanSessione.cliente(item.clienteId).ragioneSociale }">
 									<f:param name="id" value="#{item.clienteId }"></f:param>
-									<span class="muted"> #{beanSessione.cliente(item.clienteId).codice }</span>
 								</h:link>
 							</h:column>
-							<h:column>
-								<f:facet name="header">Licenza Num</f:facet>
-								<h:outputText value="#{item.licenzaNumero }"></h:outputText>
-							</h:column>
 
 							<h:column>
-								<f:facet name="header">Canone (anno)</f:facet>
-								<h:outputText value="#{item.canoneDataInizio }">
-									<f:convertDateTime pattern="yyyy"></f:convertDateTime>
-								</h:outputText>
+								<f:facet name="header">Telefono</f:facet>
+								<h:outputText value="#{beanSessione.cliente(item.clienteId).telefono }"></h:outputText>								
 							</h:column>
 
-							<h:column>
-								<f:facet name="header">Consumo (fino al)</f:facet>
-								<h:outputText value="#{item.consumoDataFine }">
-									<f:convertDateTime pattern="MMMM yyyy"></f:convertDateTime>
-								</h:outputText>
-							</h:column>
-
-							<h:column>
-								<f:facet name="header">Linee Attive</f:facet>
-
-								<ui:repeat var="linea" value="#{beanContratti.elencoLinee(item.linee) }" varStatus="status">
-									<h:outputText value="#{linea.nome } "></h:outputText>
-								</ui:repeat>
-
-							</h:column>
 						</h:dataTable>
 
 					</div>
 					<div class="span6">
 
-						<p:pieChart id="chartConsumi" value="#{beanDashboard.pieModelConsumi}" legendPosition="w" title="#{beanDashboard.consumiNum } Consumi registrati"
+						<p:pieChart id="chartConsumi" value="#{beanDashboard.pieModelConsumi}" legendPosition="w" title="#{beanDashboard.consumiNum } Attività inserite"
 							style="width:400px;height:300px" />
 
 
-						<h4>Ultime Ricariche</h4>
+						<h4>Ultimi Documenti Emissi</h4>
 						<h:dataTable value="#{beanDashboard.ultimeRicariche }" var="item" styleClass="table">
 							<h:column>
 								<f:facet name="header">Cliente</f:facet>
