@@ -127,7 +127,7 @@
 
 				<div class="row-fluid">
 
-					<h:dataTable value="#{beanClienti.elenco }" var="item" styleClass="table table-bordered table-striped table-hover">
+					<h:dataTable value="#{beanClienti.elenco}" var="item" styleClass="table table-bordered table-striped table-hover">
 
 						<h:column>
 							<f:facet name="header">ID Cliente</f:facet>
@@ -148,20 +148,13 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Licenza</f:facet>
-							<!-- <h:outputText styleClass="" value="#{item.licenza }"></h:outputText> -->
+							<f:facet name="header">E-mail</f:facet>
+							<h:outputLink value="mailto:#{item.email}">#{item.email}</h:outputLink>
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Ultimo Accesso</f:facet>
-							<!-- 							<h:outputText styleClass="" value="#{item.ultimoAccesso }">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
-							</h:outputText>
-							<small> <h:outputText styleClass="muted" value="#{item.ultimoAccesso }">
-									<f:converter converterId="org.ocpsoft.PrettyTimeConverter"/>
-									<f:converter converterId="org.ocpsoft.PrettyTimeConverter" />
-								</h:outputText>
-							</small> -->
+							<f:facet name="header">Comune</f:facet>
+							<h:outputText value="#{item.indirizzoComune}"></h:outputText>
 						</h:column>
 
 						<h:column>
