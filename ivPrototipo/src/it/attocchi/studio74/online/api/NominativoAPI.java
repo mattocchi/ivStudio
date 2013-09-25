@@ -2,6 +2,7 @@ package it.attocchi.studio74.online.api;
 
 import it.attocchi.jpa2.JpaController;
 import it.attocchi.jpa2.entities.api.CrudApi;
+import it.attocchi.studio74.online.entities.Linea;
 import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.filters.NominativoFiltro;
 import it.attocchi.utils.ListUtils;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class NominativoAPI extends CrudApi<Nominativo> {
 
@@ -63,13 +66,25 @@ public class NominativoAPI extends CrudApi<Nominativo> {
 	public List<Nominativo> listaContatti(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
 		return JpaController.callFind(emf, Nominativo.class, new NominativoFiltro(RuoloContattoEnum.CONTATTO));
 	}
-	
+
 	public List<Nominativo> listaUtenti(EntityManagerFactory emf, Nominativo currentUser) throws Exception {
 		return JpaController.callFind(emf, Nominativo.class, new NominativoFiltro(RuoloContattoEnum.UTENTE));
-	}	
+	}
 
 	public Nominativo cerca(EntityManagerFactory emf, long clienteId) throws Exception {
 		Nominativo res = JpaController.callFindById(emf, Nominativo.class, clienteId);
+		return res;
+	}
+
+	public List<Nominativo> listaDaIds(EntityManagerFactory emf, String ids) throws Exception {
+		List<Nominativo> res = new ArrayList<Nominativo>();
+
+		if (StringUtils.isNotBlank(ids)) {
+			NominativoFiltro f = new NominativoFiltro();
+			f.setIds(ids);
+			res = JpaController.callFind(emf, Nominativo.class, f);
+		}
+
 		return res;
 	}
 }

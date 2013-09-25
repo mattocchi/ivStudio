@@ -1,8 +1,8 @@
 package it.attocchi.studio74.online.pages;
 
-import it.attocchi.studio74.online.api.LineaAPI;
+import it.attocchi.studio74.online.api.NominativoAPI;
 import it.attocchi.studio74.online.entities.Attivita;
-import it.attocchi.studio74.online.entities.Linea;
+import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.filters.AttivitaFiltro;
 import it.attocchi.studio74.online.jsf.PageBaseListS74;
 
@@ -50,10 +50,11 @@ public class BeanContratti extends PageBaseListS74<Attivita, AttivitaFiltro> {
 
 	}
 
-	public List<Linea> elencoLinee(String ids) {
-		List<Linea> res = new ArrayList<Linea>();
+	public List<Nominativo> elencoLinee(String ids) {
+		List<Nominativo> res = new ArrayList<Nominativo>();
 		try {
-			res = new LineaAPI().listaDaIds(getEmfShared(), ids);
+			// res = new LineaAPI().listaDaIds(getEmfShared(), ids);
+			res = new NominativoAPI().listaDaIds(getEmfShared(), ids);
 		} catch (Exception ex) {
 			addWarnMessage(ex.getMessage());
 		}

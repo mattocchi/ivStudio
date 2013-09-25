@@ -97,11 +97,11 @@
 											<a href="#">Tutti</a>
 										</li>
 										<ui:repeat var="utente" value="#{beanSessione.utenti }">
-										<li>
-											<a href="#">#{utente.nomeVisualizzato }</a>
-										</li>
+											<li>
+												<a href="#">#{utente.nomeVisualizzato }</a>
+											</li>
 										</ui:repeat>
-									
+
 									</ul>
 								</div>
 							</div>
@@ -133,30 +133,35 @@
 							<h:link outcome="/clienti/scheda" value="#{beanSessione.cliente(item.clienteId).ragioneSociale }">
 								<f:param name="id" value="#{item.clienteId }"></f:param>
 								<span class="muted"> #{beanSessione.cliente(item.clienteId).codice }</span>
+								<!-- <i class="fam-information"></i> -->
 							</h:link>
 						</h:column>
 
-						<h:column>
+						<!-- 						<h:column>
 							<f:facet name="header">Licenza Num</f:facet>
 							<h:outputText value="#{item.licenzaNumero }"></h:outputText>
+						</h:column> -->
+
+						<h:column>
+							<f:facet name="header">Cosa</f:facet>
+							
+							<h:link styleClass="" outcome="modifica">
+								<!-- <i class="fam-add"></i> -->
+								<h:outputText value="#{item.tipologia }"></h:outputText>
+								<f:param name="id" value="0"></f:param>
+							</h:link>
+							
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Canone (anno)</f:facet>
-							<h:outputText value="#{item.canoneDataInizio }">
-								<f:convertDateTime pattern="yyyy"></f:convertDateTime>
-							</h:outputText>
-						</h:column>
-
-						<h:column>
-							<f:facet name="header">Consumo (fino al)</f:facet>
+							<f:facet name="header">Quando</f:facet>
 							<h:outputText value="#{item.consumoDataFine }">
 								<f:convertDateTime pattern="MMMM yyyy"></f:convertDateTime>
 							</h:outputText>
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Linee Attive</f:facet>
+							<f:facet name="header">Condivisione</f:facet>
 
 							<ui:repeat var="linea" value="#{beanContratti.elencoLinee(item.linee) }" varStatus="status">
 								<h:outputText value="#{linea.nome } "></h:outputText>
@@ -165,15 +170,15 @@
 						</h:column>
 
 						<h:column>
-							<f:facet name="header">Ultimo Accesso</f:facet>
+							<f:facet name="header">Ultima Nota</f:facet>
 
 						</h:column>
 
 						<h:column>
 							<f:facet name="header">Stato</f:facet>
 
-							<h:outputText styleClass="label label-success" value="Attivo" rendered="#{not item.scaduto }"></h:outputText>
-							<h:outputText styleClass="label label-important" value="Scaduto" rendered="#{item.scaduto }"></h:outputText>
+							<h:outputText styleClass="label label-success" value="Completata" rendered="#{not item.aggiornamentoAttivo }"></h:outputText>
+							<h:outputText styleClass="label label-important" value="Da Fare" rendered="#{item.aggiornamentoAttivo }"></h:outputText>
 							<!-- 							<h:outputText styleClass="label label-warning" value="#{item.stato }" rendered="#{item.stato == 'Riserva' }"></h:outputText>
  -->
 
@@ -195,7 +200,7 @@
 							<div class="btn-group">
 								<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Azioni <span class="caret"></span>
 								</a>
-								<ul class="dropdown-menu">
+								<ul class="dropdown-menu pull-right">
 									<!-- dropdown menu links -->
 									<li>
 										<h:link tabindex="-1" outcome="modifica">
@@ -211,7 +216,7 @@
 											<f:param name="idRinnovo" value="#{item.id }"></f:param>
 											<!-- <i class="icon-folder-open"></i><h:outputText value="Modifica"></h:outputText> -->
 											<i class="fam-money-add"></i>
-											<h:outputText value=" Rinnova"></h:outputText>
+											<h:outputText value=" Crea una Attivita collegata"></h:outputText>
 										</h:link>
 									</li>
 

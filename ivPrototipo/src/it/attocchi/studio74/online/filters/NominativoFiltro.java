@@ -2,8 +2,10 @@ package it.attocchi.studio74.online.filters;
 
 import it.attocchi.jpa2.JPAEntityFilter;
 import it.attocchi.studio74.online.api.NominativoAPI.RuoloContattoEnum;
+import it.attocchi.studio74.online.entities.Linea_;
 import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.entities.Nominativo_;
+import it.attocchi.utils.ListUtils;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class NominativoFiltro extends JPAEntityFilter<Nominativo> {
 
 	private RuoloContattoEnum ruoloContatto;
 	private String username;
+	private String ids;
 
 	public RuoloContattoEnum getRuoloContatto() {
 		return ruoloContatto;
@@ -44,6 +47,14 @@ public class NominativoFiltro extends JPAEntityFilter<Nominativo> {
 	public NominativoFiltro(RuoloContattoEnum ruoloContatto) {
 		super();
 		this.ruoloContatto = ruoloContatto;
+	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
 	}
 
 	@Override
@@ -71,6 +82,12 @@ public class NominativoFiltro extends JPAEntityFilter<Nominativo> {
 
 		if (StringUtils.isNotBlank(username)) {
 			Predicate p1 = criteriaBuilder.equal(root.get(Nominativo_.userName), username);
+			predicateList.add(p1);
+		}
+		
+		if (StringUtils.isNotBlank(ids)) {
+			List<Long> listaId = ListUtils.fromCommaSeparedLong(ids);
+			Predicate p1 = root.get(Nominativo_.id).in(listaId);
 			predicateList.add(p1);
 		}
 	}
