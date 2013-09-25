@@ -43,40 +43,35 @@
 						<li class="#{beanMenu.menu eq 'attivita' ? 'active' : '' }">
 							<h:commandLink value="" action="#{beanMenu.actionGo }">
 								<i class="icon-time"></i>
-								<f:setPropertyActionListener target="#{beanMenu.menu }" value="contratti"></f:setPropertyActionListener>
+								<f:setPropertyActionListener target="#{beanMenu.menu }" value="attivita"></f:setPropertyActionListener>
 								<h:outputText value=" Attivita"></h:outputText>
 							</h:commandLink>
 						</li>
 						<li class="#{beanMenu.menu eq 'fatture' ? 'active' : '' }">
 							<h:commandLink value="" action="#{beanMenu.actionGo }">
 								<i class="icon-tasks"></i>
-								<f:setPropertyActionListener target="#{beanMenu.menu }" value="consumi"></f:setPropertyActionListener>
+								<f:setPropertyActionListener target="#{beanMenu.menu }" value="fatture"></f:setPropertyActionListener>
 								<h:outputText value=" Fatture"></h:outputText>
 							</h:commandLink>
 						</li>
 						<li class="#{beanMenu.menu eq 'lavori' ? 'active' : '' }">
 							<h:commandLink value="" action="#{beanMenu.actionGo }">
 								<i class="icon-certificate"></i>
-								<f:setPropertyActionListener target="#{beanMenu.menu }" value="licenze"></f:setPropertyActionListener>
+								<f:setPropertyActionListener target="#{beanMenu.menu }" value="lavori"></f:setPropertyActionListener>
 								<h:outputText value=" Lavori (SAL)"></h:outputText>
 							</h:commandLink>
 						</li>
 
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-wrench	"></i> <h:outputText value=" Amministrazione"></h:outputText> <!-- Amministrazione <b class="caret"></b> -->
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-wrench	"></i> <h:outputText value=" Configurazione"></h:outputText>
 							</a>
 							<ul class="dropdown-menu">
-								<li class="#{beanMenu.menu eq 'linee' ? 'active' : '' }">
-									<h:commandLink value="Linee" action="#{beanMenu.actionGo }">
-										<f:setPropertyActionListener target="#{beanMenu.menu }" value="linee"></f:setPropertyActionListener>
+								<li class="#{beanMenu.menu eq 'impostazioni' ? 'active' : '' }">
+									<h:commandLink value="Impostazioni" action="#{beanMenu.actionGo }">
+										<f:setPropertyActionListener target="#{beanMenu.menu }" value="impostazioni"></f:setPropertyActionListener>
 									</h:commandLink>
 								</li>
-								<li class="#{beanMenu.menu eq 'moduli' ? 'active' : '' }">
-									<h:commandLink value="Moduli" action="#{beanMenu.actionGo }">
-										<f:setPropertyActionListener target="#{beanMenu.menu }" value="moduli"></f:setPropertyActionListener>
-									</h:commandLink>
-								</li>
-
+								
 								<li class="divider"></li>
 								<li>
 									<a href="#">Utenti</a>
@@ -85,10 +80,10 @@
 									<a href="#">Gruppi</a>
 								</li>
 
-								<li class="divider"></li>
-								<li class="disabled">
-									<a href="#">Configurazione</a>
-								</li>
+								<!-- 									<li class="divider"></li>
+									<li class="disabled">
+										<a href="#">Setup</a>
+									</li> -->
 							</ul>
 						</li>
 
