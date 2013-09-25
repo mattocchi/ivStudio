@@ -1,6 +1,7 @@
 package it.attocchi.studio74.online.api;
 
 import it.attocchi.jpa2.JpaController;
+import it.attocchi.studio74.online.api.exceptions.ivsApiException;
 import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.entities.Nota;
 import it.attocchi.studio74.online.filters.NotaFiltro;
@@ -8,6 +9,8 @@ import it.attocchi.studio74.online.filters.NotaFiltro;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class NotaAPI extends S74Crud<Nota> {
 	public enum NotaTipoEnum {
@@ -27,7 +30,8 @@ public class NotaAPI extends S74Crud<Nota> {
 		NotaFiltro filtro = new NotaFiltro();
 		filtro.setOggettoClasse(oggettoClasse.getName());
 		filtro.setOggettoId(oggettoId);
-		filtro.setTipo(tipo.name());
+		if (tipo != null)
+			filtro.setTipo(tipo.name());
 
 		List<Nota> res = JpaController.callFind(emf, Nota.class, filtro);
 
@@ -36,8 +40,11 @@ public class NotaAPI extends S74Crud<Nota> {
 
 	@Override
 	public void salvaPre(EntityManagerFactory emf, Nominativo utente, Nota elemento) throws Exception {
-		// TODO Auto-generated method stub
-
+		if (elemento == null)
+			throw new ivsApiException("Oggetto Nota null");
+		
+		if (StringUtils.isBlank(elemento.getNota()))
+			throw new ivsApiException("Specificare una nota valida.");
 	}
 
 	@Override

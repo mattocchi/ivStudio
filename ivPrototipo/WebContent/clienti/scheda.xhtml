@@ -31,7 +31,7 @@
 						<div class="well">
 
 							<p>
-								ID Cliente:
+								Codice:
 								<h:outputText value="#{beanCliente.elemento.codice }" styleClass="fontBold"></h:outputText>
 								<br />Ragione Sociale:
 								<h:outputText value="#{beanCliente.elemento.ragioneSociale }" styleClass="fontBold"></h:outputText>
@@ -144,7 +144,7 @@
 
 					<div class="span8">
 
-						<h4>Contratti</h4>
+						<h4>Attivita</h4>
 						<h:dataTable value="#{beanCliente.statoCliente.contratti }" var="item" styleClass="table">
 							<h:column>
 								<f:facet name="header">#</f:facet>
@@ -177,7 +177,7 @@
 
 
 						<h4>
-							Consumo
+							Fatture
 							<span class="muted">(credito residuo #{beanCliente.statoCliente.consumoCredito - beanCliente.statoCliente.consumoUsato})</span>
 						</h4>
 
@@ -206,7 +206,7 @@
 						</h:dataTable>
 
 						<h4>
-							Licenze
+							Lavori
 							<span class="muted">(postazioni totali #{beanCliente.statoCliente.licenzeTot})</span>
 						</h4>
 						<h:dataTable value="#{beanCliente.statoCliente.licenze }" var="item" styleClass="table">

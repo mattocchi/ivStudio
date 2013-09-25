@@ -147,7 +147,7 @@ public class StatoCliente {
 			consumoResiduo = consumoCredito - consumoUsato;
 			consumoResiduoPerc = 100 - ((consumoUsato / consumoCredito) * 100);
 
-			note = new NotaAPI().lista(emf, utenteCorrente, Nominativo.class, idCliente, NotaTipoEnum.NOTA);
+			note = new NotaAPI().lista(emf, utenteCorrente, Nominativo.class, idCliente);
 			noteAssistenza = new NotaAPI().lista(emf, utenteCorrente, Nominativo.class, idCliente, NotaTipoEnum.ASSISTENZA);
 
 			/* Conteggi */

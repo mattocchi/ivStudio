@@ -1,7 +1,7 @@
 package it.attocchi.studio74.online.api;
 
 import it.attocchi.jpa2.JpaController;
-import it.attocchi.studio74.online.api.exceptions.S74ApiException;
+import it.attocchi.studio74.online.api.exceptions.ivsApiException;
 import it.attocchi.studio74.online.entities.Licenza;
 import it.attocchi.studio74.online.entities.Nominativo;
 import it.attocchi.studio74.online.filters.LicenzaFiltro;
@@ -23,13 +23,13 @@ public class LicenzaAPI extends S74Crud<Licenza> {
 	public void salvaPre(EntityManagerFactory emf, Nominativo utente, Licenza elemento) throws Exception {
 
 		if (elemento.getClienteId() <= 0)
-			throw new S74ApiException("Specificare un Cliente valido.");
+			throw new ivsApiException("Specificare un Cliente valido.");
 
 		if (elemento.getNumeroPostazioni() <= 0)
-			throw new S74ApiException("Specificare un numero di postazioni valido.");
+			throw new ivsApiException("Specificare un numero di postazioni valido.");
 
 		if (StringUtils.isBlank(elemento.getTipo()))
-			throw new S74ApiException("Specificare un Tipo valido.");
+			throw new ivsApiException("Specificare un Tipo valido.");
 
 	}
 

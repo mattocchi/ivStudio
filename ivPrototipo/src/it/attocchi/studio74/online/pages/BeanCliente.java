@@ -101,6 +101,7 @@ public class BeanCliente extends PageBaseDetailS74<Nominativo> {
 
 	public String actionAggiungiNota() {
 		try {
+			
 			new NotaAPI().salva(getEmfShared(), getCurrentUser(), nuovaNota);
 
 			refreshException();
