@@ -21,11 +21,20 @@
 
 					<a class="brand" href="#">Sistema Fisco</a>
 					<div class="nav-collapse collapse">
-						<p class="navbar-text pull-right">
-							Benvenuto <a href="#" class="navbar-link"> <h:outputText value="#{beanMenu.currentUser.nomeVisualizzato }"></h:outputText>
+						<div class="btn-group pull-right">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i> <h:outputText value=" #{beanMenu.currentUser.nomeVisualizzato }"></h:outputText>
+								<span class="caret"></span>
 							</a>
-						</p>
-
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#"><i class="icon-user"></i> Profilo</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="#"><i class="icon-off"></i> Esci</a>
+								</li>
+							</ul>
+						</div>
 
 						<!-- 						<ul class="nav pull-right">
 							<li>
