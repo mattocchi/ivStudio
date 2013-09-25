@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough" xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<div class="span12">
+						<fieldset>
+							<legend>Licenze (#{beanLicenza.licenzeTot} postazioni)</legend>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+				</div>
+
+				<div class="row-fluid">
+					<div class="form-inline">
+
+						<h:selectOneMenu value="#{beanLicenza.elemento.clienteId }" styleClass="input-xlarge select2Clear" p:data-placeholder="Seleziona un Cliente">
+							<f:selectItem itemValue="0" itemLabel="Selezionare un Cliente"></f:selectItem>
+							<f:selectItems value="#{beanSessione.clienti }"></f:selectItems>
+						</h:selectOneMenu>
+						<h:inputText styleClass="input-small" p:placeholder="Numero" value="#{beanLicenza.elemento.numeroPostazioni }" />
+
+						<h:selectOneMenu value="#{beanLicenza.elemento.tipo }" styleClass="input-large select2Clear" p:data-placeholder="Seleziona il Tipo">
+							<f:selectItem itemValue="" itemLabel=""></f:selectItem>
+							<f:selectItems value="#{beanSessione.licenzaPostazioneTipo }"></f:selectItems>
+						</h:selectOneMenu>
+
+						<h:commandLink id="btnFiltri" styleClass="btn" action="#{beanLicenza.actionAggiungi }">
+							<i class="fam-add"></i>
+							<h:outputText value=" Aggiungi Postazione"></h:outputText>
+						</h:commandLink>
+					</div>
+					<hr />
+				</div>
+
+				<div class="row-fluid">
+					<div class="span6">
+						<div class="input-append">
+							<!-- <input class="input-medium" id="appendedInputButtons" type="text" /> -->
+							<h:inputText value="#{beanLicenza.filtro.semeRicerca }" styleClass="input-medium"></h:inputText>
+							<!-- <button class="btn" type="button">Cerca1</button> -->
+							<h:commandLink styleClass="btn" value="Cerca" action="#{beanLicenza.actionCerca }"></h:commandLink>
+						</div>
+					</div>
+
+					<div class="span6">
+						<div class="pull-right"></div>
+					</div>
+
+
+				</div>
+
+				<h:panelGroup id="rowFiltri">
+					<div class="row-fluid"></div>
+				</h:panelGroup>
+
+
+				<div class="row-fluid">
+					<div class="pull-right">
+						<widget:itemsnum backbean="#{beanLicenza}"></widget:itemsnum>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+
+					<h:dataTable value="#{beanLicenza.elenco }" var="item" styleClass="table table-bordered table-striped table-hover">
+
+						<h:column>
+							<f:facet name="header">Cliente</f:facet>
+							<!-- <h:outputText value="#{beanSessione.cliente(item.clienteId).ragioneSociale }"></h:outputText> -->
+							<h:link outcome="/clienti/scheda" value="#{beanSessione.cliente(item.clienteId).ragioneSociale }">
+								<f:param name="id" value="#{item.clienteId }"></f:param>
+								<span class="muted"> #{beanSessione.cliente(item.clienteId).codice }</span>
+							</h:link>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Numero Postazioni</f:facet>
+							<h:outputText value="#{item.numeroPostazioni} #{item.tipo}"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Data</f:facet>
+							<h:outputText value="#{item.entityMarks.dataCreazione}">
+								<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+							</h:outputText>
+						</h:column>
+
+					</h:dataTable>
+					<!-- </div> -->
+
+					<!-- <widget:pagination backbean="#{beanClienti}" filter="#{beanLicenza.filtro }" actionPageNext="#{beanLicenza.actionPageNext}" actionPagePrev="#{beanLicenza.actionPagePrev}"></widget:pagination> -->
+					<widget:pagination backbean="#{beanClienti}" filter="#{beanLicenza.filtro }"></widget:pagination>
+
+					<!-- 					<h:commandLink value="Next" action="#{beanLicenza.actionPageNext}"></h:commandLink>
+					<h:commandLink value="Prev" action="#{beanLicenza.actionPagePrev}"></h:commandLink> -->
+
+					<!-- <div class="pagination pagination-centered">
+						<div class="pagination">
+							<ul>
+								<li>
+									<a href="#">&laquo;</a>
+								</li>
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<a href="#">5</a>
+								</li>
+								<li>
+									<a href="#">&raquo;</a>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="menu">
+			<ui:include src="/templates/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					
+					<h3>Accessi</h3>
+					
+					<div class="input-append">
+						<!-- <input class="input-medium" id="appendedInputButtons" type="text" /> -->
+						<h:inputText value="#{clienteController.semeRicerca }" styleClass="input-medium"></h:inputText>
+						<!-- <button class="btn" type="button">Search</button> -->
+						<h:commandButton styleClass="btn" value="Cerca" action="#{clienteController.actionCerca }"></h:commandButton>
+					</div>
+
+					<div class="pull-right">
+						<h:commandLink id="btnFiltri" styleClass="btn" action="#{clienteController.actionFiltri }">
+							<i class="icon-search"></i> Ricerca Avanzata
+							</h:commandLink>
+					</div>
+
+				</div>
+
+				<h:panelGroup id="filtri" layout="div" styleClass="row-fluid" rendered="#{clienteController.filtri }">
+					<div class="span4">
+						<div class="well">
+							<ul class="nav nav-list">
+								<li class="nav-header">Clienti</li>
+								<li class="active">
+									<a href="#">Tutti</a>
+								</li>
+								<li>
+									<a href="#">Attivi</a>
+								</li>
+								<li>
+									<a href="#">Scaduti</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="well">
+							<ul class="nav nav-list">
+								<li class="nav-header">Licenze</li>
+								<li class="active">
+									<a href="#">Tutte</a>
+								</li>
+								<li>
+									<a href="#">Scadono il prossimo mese</a>
+								</li>
+								<li>
+									<a href="#">Scadono questo mese</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span4">
+						<div class="well">
+							<ul class="nav nav-list">
+								<li class="nav-header">Utilizzo</li>
+								<li class="active">
+									<a href="#">Tutti</a>
+								</li>
+								<li>
+									<a href="#">Postazione</a>
+								</li>
+								<li>
+									<a href="#">Rete</a>
+								</li>
+								<li>
+									<a href="#">Terminal</a>
+								</li>
+								<li>
+									<a href="#">Consumo</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</h:panelGroup>
+
+				<div class="row-fluid">
+					<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+				</div>
+
+
+
+
+				<div class="row-fluid">
+					<!-- 					<div class="span2">
+						Sidebar content
+
+
+
+						<div class="well sidebar-nav"></div>
+
+						<div class="well sidebar-nav"></div>
+
+						<div class="well sidebar-nav"></div>
+
+					</div>
+					<div class="span10"> -->
+					<!--Body content-->
+
+					<!-- 					<div style="table table-striped table-hover">
+						<ui:repeat var="item" value="#{clienteController.risultati }">
+							
+						</ui:repeat>
+					</div> -->
+
+					<h:dataTable value="#{clienteController.risultati }" var="item" styleClass="table table-striped table-hover">
+
+						<h:column>
+							<f:facet name="header">#</f:facet>
+							<h:outputText value="#{item.id }"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Ragione Sociale</f:facet>
+							<!-- <h:outputText value="#{item.ragioneSociale }"></h:outputText> -->
+							<h:link outcome="dettaglio" value="#{item.ragioneSociale }">
+								<f:param name="id" value="#{item.id }"></f:param>
+							</h:link>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Partita Iva</f:facet>
+							<h:outputText value="#{item.partitaIva }"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Licenza</f:facet>
+							<h:outputText styleClass="" value="#{item.licenza }"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Ultimo Accesso</f:facet>
+							<h:outputText styleClass="" value="#{item.ultimoAccesso }">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+							</h:outputText>
+							<small> <h:outputText styleClass="muted" value="#{item.ultimoAccesso }">
+									<!-- <f:converter converterId="org.ocpsoft.PrettyTimeConverter"/> -->
+									<f:converter converterId="org.ocpsoft.PrettyTimeConverter" />
+								</h:outputText>
+							</small>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Stato</f:facet>
+							<h:outputText styleClass="label label-success" value="#{item.stato }" rendered="#{item.stato == 'Attivo' }"></h:outputText>
+							<h:outputText styleClass="label label-important" value="#{item.stato }" rendered="#{item.stato == 'Scaduto' }"></h:outputText>
+							<h:outputText styleClass="label label-warning" value="#{item.stato }" rendered="#{item.stato == 'Riserva' }"></h:outputText>
+							<!-- <span class="label label-important">Disattivo</span> -->
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Azioni</f:facet>
+
+							<h:button styleClass="btn btn-mini btn-primary" value="Apri" outcome="dettaglio">
+								<f:param name="id" value="#{item.id }"></f:param>
+							</h:button>
+
+							<h:outputText value="  "></h:outputText>
+							<h:commandButton styleClass="btn btn-mini btn-danger" value="Blocca" rendered="#{item.attivo }"></h:commandButton>
+							<h:commandButton styleClass="btn btn-mini btn-success" value="Autorizza" rendered="#{not item.attivo }"></h:commandButton>
+							<h:outputText value="  "></h:outputText>
+							<h:commandButton styleClass="btn btn-mini btn-warning" value="Ricarica" rendered="#{not item.attivo }"></h:commandButton>
+
+						</h:column>
+
+					</h:dataTable>
+					<!-- </div> -->
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

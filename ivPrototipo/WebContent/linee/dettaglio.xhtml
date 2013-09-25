@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<div class="span10 offset1">
+						<fieldset>
+							<legend>
+								<h:outputText value="#{beanLinea.elemento.nome }"></h:outputText>
+							</legend>
+
+							<label>Linea</label>
+							<p:inputText value="#{beanLinea.elemento.nome }"></p:inputText>
+							<span class="help-block">Specifica un nome per questa Linea di prodotto.</span>
+
+							<label>Codice</label>
+							<p:inputText value="#{beanLinea.elemento.codice }"></p:inputText>
+
+
+							<h:commandButton styleClass="btn btn-primary" value="Salva"></h:commandButton>
+						</fieldset>
+					</div>
+				</div>
+
+
+				<!-- 				<div class="row-fluid">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#">Licenze</a>
+						</li>
+						<li>
+							<a href="#">Accessi</a>
+						</li>
+					</ul>
+				</div> -->
+			</div>
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</body>
+</html>

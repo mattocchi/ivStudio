@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<div class="span12">
+						<fieldset>
+							<legend>
+								Clienti (<widget:itemsnum backbean="#{beanClienti}"></widget:itemsnum>)
+							</legend>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="span6">
+						<div class="input-append">
+							<!-- <input class="input-medium" id="appendedInputButtons" type="text" /> -->
+							<h:inputText value="#{beanClienti.filtro.semeRicerca }" styleClass="input-medium"></h:inputText>
+							<h:commandLink styleClass="btn" value="Cerca" action="#{beanClienti.actionCerca }"></h:commandLink>
+							<!-- <h:commandButton styleClass="btn" value="Cerca" action="#{beanClienti.actionCerca }"></h:commandButton> -->
+						</div>
+					</div>
+
+					<div class="span6">
+						<div class="pull-right">
+
+							<h:link id="btnNuovo" styleClass="btn" outcome="modifica">
+								<i class="fam-add"></i>
+								<h:outputText value=" Registra Cliente"></h:outputText>
+								<f:param name="id" value="0"></f:param>
+							</h:link>
+
+							<h:commandLink id="btnFiltri" styleClass="#{beanClienti.filtri ? 'btn active' : 'btn'}" action="#{beanClienti.actionFiltri }">
+								<i class="fam-find"></i>
+								<h:outputText value=" Filtri Avanzati"></h:outputText>
+								<f:ajax execute="" render="rowFiltri" />
+							</h:commandLink>
+
+						</div>
+					</div>
+
+
+				</div>
+
+				<h:panelGroup id="rowFiltri">
+					<div class="row-fluid">
+						<h:panelGroup id="filtri" layout="div" styleClass="row-fluid" rendered="#{beanClienti.filtri }">
+							<div class="span4">
+								<div class="well">
+									<ul class="nav nav-list">
+										<li class="nav-header">Clienti</li>
+										<li class="active">
+											<a href="#">Tutti</a>
+										</li>
+										<li>
+											<a href="#">Attivi</a>
+										</li>
+										<li>
+											<a href="#">Scaduti</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="well">
+									<ul class="nav nav-list">
+										<li class="nav-header">Licenze</li>
+										<li class="active">
+											<a href="#">Tutte</a>
+										</li>
+										<li>
+											<a href="#">Scadono il prossimo mese</a>
+										</li>
+										<li>
+											<a href="#">Scadono questo mese</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="well">
+									<ul class="nav nav-list">
+										<li class="nav-header">Utilizzo</li>
+										<li class="active">
+											<a href="#">Tutti</a>
+										</li>
+										<li>
+											<a href="#">Postazione</a>
+										</li>
+										<li>
+											<a href="#">Rete</a>
+										</li>
+										<li>
+											<a href="#">Terminal</a>
+										</li>
+										<li>
+											<a href="#">Consumo</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</h:panelGroup>
+					</div>
+				</h:panelGroup>
+
+				<div class="row-fluid">
+					<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+				</div>
+
+				<div class="row-fluid">
+					<div class="pull-right">
+						<widget:itemsnum backbean="#{beanClienti}"></widget:itemsnum>
+					</div>
+				</div>
+
+
+				<div class="row-fluid">
+
+					<h:dataTable value="#{beanClienti.elenco }" var="item" styleClass="table table-bordered table-striped table-hover">
+
+						<h:column>
+							<f:facet name="header">ID Cliente</f:facet>
+							<h:outputText value="#{item.codice }"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Ragione Sociale</f:facet>
+							<!-- <h:outputText value="#{item.ragioneSociale }"></h:outputText> -->
+							<h:link outcome="scheda" value="#{item.ragioneSociale }">
+								<f:param name="id" value="#{item.id }"></f:param>
+							</h:link>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Partita Iva</f:facet>
+							<h:outputText value="#{item.partitaIva }"></h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Licenza</f:facet>
+							<!-- <h:outputText styleClass="" value="#{item.licenza }"></h:outputText> -->
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Ultimo Accesso</f:facet>
+							<!-- 							<h:outputText styleClass="" value="#{item.ultimoAccesso }">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"></f:convertDateTime>
+							</h:outputText>
+							<small> <h:outputText styleClass="muted" value="#{item.ultimoAccesso }">
+									<f:converter converterId="org.ocpsoft.PrettyTimeConverter"/>
+									<f:converter converterId="org.ocpsoft.PrettyTimeConverter" />
+								</h:outputText>
+							</small> -->
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Stato</f:facet>
+
+							<!-- 							<h:outputText styleClass="label label-success" value="#{item.stato }" rendered="#{item.stato == 'Attivo' }"></h:outputText>
+							<h:outputText styleClass="label label-important" value="#{item.stato }" rendered="#{item.stato == 'Scaduto' }"></h:outputText>
+							<h:outputText styleClass="label label-warning" value="#{item.stato }" rendered="#{item.stato == 'Riserva' }"></h:outputText>
+ -->
+							<!-- <span class="label label-important">Disattivo</span> -->
+						</h:column>
+
+						<h:column>
+							<f:facet name="header"></f:facet>
+
+							<!-- 							<div class="btn-group">
+								<h:button styleClass="btn btn-small" value="Apri" outcome="dettaglio">
+									<f:param name="id" value="#{item.id }"></f:param>
+								</h:button>
+								<h:outputText value="  "></h:outputText>
+								<h:commandButton styleClass="btn btn-small" value="Blocca" rendered="#{item.attivo }"></h:commandButton>
+								<h:commandButton styleClass="btn btn-small" value="Autorizza" rendered="#{not item.attivo }"></h:commandButton>
+								<h:outputText value="  "></h:outputText>
+								<h:commandButton styleClass="btn btn-small " value="Ricarica" rendered="#{not item.attivo }"></h:commandButton>
+							</div> -->
+
+							<div class="btn-group">
+								<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> Azioni <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- dropdown menu links -->
+									<li>
+										<!-- <a tabindex="-1" href="#">Apri</a> -->
+										<h:link tabindex="-1" outcome="scheda">
+											<f:param name="id" value="#{item.id }"></f:param>
+											<i class="icon-folder-open"></i> Apri Scheda
+										</h:link>
+
+
+									</li>
+									<li class="divider"></li>
+									<li>
+										<h:link tabindex="-1" outcome="modifica">
+											<f:param name="id" value="#{item.id }"></f:param>
+											<i class="fam-application-form-edit"></i> Modifica
+										</h:link>
+									</li>
+								</ul>
+							</div>
+
+						</h:column>
+
+					</h:dataTable>
+					<!-- </div> -->
+
+					<!-- <widget:pagination backbean="#{beanClienti}" filter="#{beanClienti.filtro }" actionPageNext="#{beanClienti.actionPageNext}" actionPagePrev="#{beanClienti.actionPagePrev}"></widget:pagination> -->
+					<widget:pagination backbean="#{beanClienti}" filter="#{beanClienti.filtro }"></widget:pagination>
+
+					<!-- 					<h:commandLink value="Next" action="#{beanClienti.actionPageNext}"></h:commandLink>
+					<h:commandLink value="Prev" action="#{beanClienti.actionPagePrev}"></h:commandLink> -->
+
+					<!-- <div class="pagination pagination-centered">
+						<div class="pagination">
+							<ul>
+								<li>
+									<a href="#">&laquo;</a>
+								</li>
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<a href="#">5</a>
+								</li>
+								<li>
+									<a href="#">&raquo;</a>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

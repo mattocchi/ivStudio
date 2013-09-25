@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+
+					<!-- <div class="form-horizontal"> Problemi con PrimeFaces -->
+					<div class="">
+
+						<fieldset>
+							<!-- Form Name -->
+							<legend>
+								<h:outputText value="#{beanLinea.elemento.nome }"></h:outputText>
+							</legend>
+						</fieldset>
+
+						<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+
+						<div class="form-horizontal">
+
+							<div class="control-group">
+								<h:outputLabel value="ID Chiave 2^" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:inputText id="txtIdChiave" value="#{beanLinea.elemento.idChiave }" styleClass="span2" placeholder="placeholder"></h:inputText>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Nome" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:inputText id="txtChiave" value="#{beanLinea.elemento.nome }" styleClass="span4" placeholder="placeholder"></h:inputText>
+									<!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> -->
+									<!-- <span class="help-inline">Inline help text</span> -->
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Codice" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:inputText id="txtCodice" value="#{beanLinea.elemento.codice }" styleClass="span2" placeholder="placeholder"></h:inputText>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Moduli" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+
+									<!-- <p:pickList id="pickList" value="#{beanLinea.moduli}" var="modulo" itemLabel="#{modulo}" itemValue="#{modulo}" /> -->
+
+									<h:selectManyListbox value="#{beanLinea.moduliSelezionati }" styleClass="span8 select2" placeholder="Seleziona i Moduli di questa linea">
+										<f:selectItems value="#{beanLinea.moduli }"></f:selectItems>
+									</h:selectManyListbox>
+
+								</div>
+
+								<!-- <p:pickList id="pickList" value="#{beanLinea.moduli}" var="modulo" itemLabel="#{modulo}" itemValue="#{modulo}" /> -->
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="form-actions">
+						<h:commandButton value="Salva" styleClass="btn btn-primary" action="#{beanLinea.actionSalva }"></h:commandButton>
+						<h:button value="Annulla" styleClass="btn" outcome="elenco"></h:button>
+					</div>
+
+
+					<!-- </div> -->
+
+				</div>
+			</div>
+
+
+
+			<!-- </h:form> -->
+
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

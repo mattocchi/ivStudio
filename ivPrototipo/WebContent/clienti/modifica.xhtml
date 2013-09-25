@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<!-- <h:form id="mainForm" prependId="false"> -->
+
+			<div class="container-fluid">
+
+				<!-- 					<div class="row-fluid">
+						<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+					</div> -->
+
+				<div class="row-fluid">
+
+					<div class="form-horizontal">
+
+						<fieldset>
+
+							<!-- Form Name -->
+							<legend>
+								<h:outputText value="#{beanCliente.elemento.ragioneSociale }"></h:outputText>
+							</legend>
+
+							<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+
+							<div class="control-group">
+								<h:outputLabel value="ID Cliente" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:inputText id="txtTo" value="#{beanCliente.elemento.codice }" styleClass="span1" placeholder=""></h:inputText>
+									<!-- <p class="help-block"></p> -->
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Categoria" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<!-- <h:inputText id="txtCategoria" value="#{beanCliente.elemento.categoria }" styleClass="" placeholder=""></h:inputText> -->
+									<h:selectOneMenu value="#{beanCliente.elemento.categoria }">
+										<f:selectItem itemValue="1" itemLabel="1"></f:selectItem>
+									</h:selectOneMenu>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Ragione Sociale" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:inputText id="txtRagioneSociale" value="#{beanCliente.elemento.ragioneSociale }" styleClass="span6" placeholder=""></h:inputText>
+									<!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> -->
+									<!-- <span class="help-inline">Inline help text</span> -->
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<div class="span2">
+										Partita Iva<br />
+										<h:inputText value="#{beanCliente.elemento.partitaIva }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+									<div class="span2">
+										Codice Fiscale<br />
+										<h:inputText value="#{beanCliente.elemento.codiceFiscale }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Recapito Aziendale" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<div class="span2">
+										Via<br />
+										<h:inputText value="#{beanCliente.elemento.indirizzoVia }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Cap<br />
+										<h:inputText value="#{beanCliente.elemento.indirizzoCap }" styleClass="input-small" placeholder=""></h:inputText>
+									</div>
+									<div class="span2">
+										Comune<br />
+										<h:inputText value="#{beanCliente.elemento.indirizzoComune }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Prov.<br />
+										<h:inputText value="#{beanCliente.elemento.indirizzoProvincia }" styleClass="input-xxsmall" placeholder=""></h:inputText>
+									</div>
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<h:outputLabel value="Recapito Fattura" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<div class="span2">
+										Via<br />
+										<h:inputText value="#{beanCliente.elemento.fatturaVia }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Cap<br />
+										<h:inputText value="#{beanCliente.elemento.fatturaCap }" styleClass="input-small" placeholder=""></h:inputText>
+									</div>
+									<div class="span2">
+										Comune<br />
+										<h:inputText value="#{beanCliente.elemento.fatturaComune }" styleClass="input-large" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Prov.<br />
+										<h:inputText value="#{beanCliente.elemento.fatturaProvincia }" styleClass="input-xxsmall" placeholder=""></h:inputText>
+									</div>
+								</div>
+							</div>							
+
+							<div class="control-group">
+								<h:outputLabel value="" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+
+									<div class="span1">
+										Telefono<br />
+										<h:inputText id="txtTelefono" value="#{beanCliente.elemento.telefono }" styleClass="input-small" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Fax<br />
+										<h:inputText id="txtFax" value="#{beanCliente.elemento.fax }" styleClass="input-small" placeholder=""></h:inputText>
+									</div>
+									<div class="span1">
+										Mobile<br />
+										<h:inputText value="#{beanCliente.elemento.mobile }" styleClass="input-small" placeholder=""></h:inputText>
+									</div>
+
+								</div>
+							</div>
+							<div class="control-group">
+								<h:outputLabel value="" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<div class="span2">
+										Email<br />
+										<h:inputText id="txtEmail" value="#{beanCliente.elemento.email }" styleClass="" placeholder=""></h:inputText>
+									</div>
+									<div class="span2">
+										Sito<br />
+										<h:inputText id="txtSito" value="#{beanCliente.elemento.sito }" styleClass="" placeholder=""></h:inputText>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<h:commandButton value="Salva" styleClass="btn btn-primary" action="#{beanCliente.actionSalva }"></h:commandButton>
+								<h:button value="Annulla" styleClass="btn" outcome="elenco"></h:button>
+							</div>
+						</fieldset>
+
+					</div>
+					<!-- </div> -->
+				</div>
+			</div>
+
+			<!-- </h:form> -->
+
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

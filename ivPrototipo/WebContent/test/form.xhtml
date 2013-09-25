@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<fieldset>
+						<legend>Legend</legend>
+						<label>Label name</label>
+						<input type="text" placeholder="Type something…" />
+						<span class="help-block">Example block-level help text here.</span>
+						<label class="checkbox">
+							<input type="checkbox" /> Check me out
+						</label>
+						<button type="submit" class="btn">Submit</button>
+					</fieldset>
+				</div>
+				<hr></hr>
+				<div class="row-fluid">
+					<div class="form-search">
+						<input type="text" class="input-medium search-query" />
+						<button type="submit" class="btn">Search</button>
+					</div>
+				</div>
+				<hr></hr>
+				<div class="row-fluid">
+					<div class="form-inline">
+						<input type="text" class="input-small" placeholder="Email" /> <input type="password" class="input-small" placeholder="Password" />
+						<label class="checkbox">
+							<input type="checkbox" /> Remember me
+						</label>
+						<button type="submit" class="btn">Sign in</button>
+					</div>
+				</div>
+				<hr></hr>
+				<div class="row-fluid">
+					<div class="form-horizontal">
+						<div class="control-group warning">
+							<label class="control-label" for="inputEmail">Email</label>
+							<div class="controls">
+								<input type="text" id="inputEmail" placeholder="Email" />
+								<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="inputPassword">Password</label>
+							<div class="controls">
+								<input type="password" id="inputPassword" placeholder="Password" />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox">
+									<input type="checkbox" /> Remember me
+								</label>
+								<button type="submit" class="btn">Sign in</button>
+							</div>
+						</div>
+						<div class="control-group error">
+							<label class="control-label" for="inputError">Input with error</label>
+							<div class="controls">
+								<input type="text" id="inputError" />
+								<span class="help-inline">Please correct the error</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr></hr>
+
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="input-prepend">
+						<span class="add-on">@</span>
+						<input class="input-block-level datepicker" id="prependInput" type="text" placeholder="Username" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-append">
+						<input class="span6" id="appendedInput" type="text" />
+						<span class="add-on">.00</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<input class="input-mini" type="text" placeholder=".input-mini"></input> <input class="input-small" type="text" placeholder=".input-small"></input> <input
+						class="input-medium" type="text" placeholder=".input-medium"></input><input class="input-large" type="text" placeholder=".input-large"></input> <input
+						class="input-xlarge" type="text" placeholder=".input-xlarge"></input> <input class="input-xxlarge" type="text" placeholder=".input-xxlarge"></input>
+				</div>
+
+				<div class="row">
+					<div id="dp3" class="input-append date datepicker" data-date-format="dd-mm-yyyy" data-date="12-02-2012">
+						<input class="span2" type="text" readonly="true" value="12-02-2012" size="16" />
+						<span class="add-on">
+							<i class="icon-calendar"></i>
+						</span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div id="dp3" class="input-append date datepicker" data-date-format="dd-mm-yyyy" data-date="12-02-2012">
+						<input class="span2" type="text" readonly="" value="12-02-2012" size="16" />
+						<span class="add-on">
+							<i class="icon-calendar"></i>
+						</span>
+					</div>
+				</div>
+				
+				<div class="row">
+					<input id="dp1" class="datepicker" type="text" value="02-16-2012"></input>
+				</div>
+				
+<!-- <button type="button" class="btn btn-primary" data-toggle="button">Single Toggle</button> -->
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

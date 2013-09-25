@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+
+					<!-- <div class="form-horizontal"> Problemi con PrimeFaces -->
+					<div class="">
+
+						<fieldset>
+							<!-- Form Name -->
+							<legend>
+								<h:outputText value="Rinnova Contratto"></h:outputText>
+							</legend>
+
+							<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+
+							<div class="control-group">
+								<h:outputLabel value="Cliente" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<b><h:outputText id="txtCliente" value="#{beanContrattoRinnova.elemento.clienteDescrizione }" styleClass="span12" placeholder="specifica il cliente"></h:outputText></b>
+
+									<!-- 									<p:autocomplete value="#{beanContrattoRinnova.selectedcliente}" id="txtcliente1" completemethod="#{autocompletebean.completecliente}" var="c"
+										itemlabel="#{c.nomevisualizzato}" itemvalue="#{p}" forceselection="true" styleclass="span6" />
+ -->
+									<!-- 									<h:selectOneMenu value="#{beanContrattoRinnova.elemento.clienteId }" styleClass="select2">
+										<f:selectItems value="#{beanContrattoRinnova.clienti }"></f:selectItems>
+									</h:selectOneMenu> -->
+
+									<!-- <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span> -->
+									<!-- <span class="help-inline">Inline help text</span> -->
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Data" styleClass="control-label"></h:outputLabel>
+
+								<div class="controls">
+									<h:inputText id="txtDataInizio" value="#{beanContrattoRinnova.elemento.canoneDataInizio }" styleClass="span2 datepicker">
+										<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+									</h:inputText>
+									<h:inputText id="txtDataFine" value="#{beanContrattoRinnova.elemento.canoneDataFine }" styleClass="span2 datepicker">
+										<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+									</h:inputText>
+								</div>
+								<span class="help-block">
+									<h:outputText styleClass="label label-success" value="Attivo" rendered="#{not beanContrattoRinnova.elemento.scaduto }"></h:outputText>
+									<h:outputText styleClass="label label-important" value="Scaduto" rendered="#{beanContrattoRinnova.elemento.scaduto }"></h:outputText>
+								</span>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Numero Licenza" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<b><h:outputText id="txtLicenzaNumero" value="#{beanContrattoRinnova.elemento.licenzaNumero }" styleClass="span12" placeholder="1"></h:outputText></b>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<h:outputLabel value="Linee Attive" styleClass="control-label"></h:outputLabel>
+								<div class="controls">
+									<h:selectManyListbox value="#{beanContrattoRinnova.lineeSelezionate }" styleClass="span8 select2">
+										<f:selectItems value="#{beanContrattoRinnova.linee }"></f:selectItems>
+									</h:selectManyListbox>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+
+					<div class="row-fluid">
+						<div class="form-actions">
+
+							<div class="btn-toolbar">
+								<div class="btn-group">
+
+
+									<!-- <h:commandButton value="Salva" styleClass="btn btn-primary" action="#{beanContrattoRinnova.actionSalva }"></h:commandButton> -->
+									<h:commandLink value="" styleClass="btn btn-primary" action="#{beanContrattoRinnova.actionSalva }">
+										<!-- <i class="fam-accept"></i> -->
+										<h:outputText value=" Salva"></h:outputText>
+									</h:commandLink>
+
+									<h:link value="" styleClass="btn" outcome="elenco">
+										<!-- <i class="fam-cancel"></i> -->
+										<h:outputText value=" Annulla"></h:outputText>
+									</h:link>
+								</div>
+
+								<div class="btn-group">
+									<h:link id="btnNuovo" styleClass="btn" outcome="modifica" rendered="#{beanContrattoRinnova.id > 0 }">
+										<i class="fam-add"></i>
+										<h:outputText value=" Nuovo Contratto"></h:outputText>
+										<f:param name="id" value="0"></f:param>
+									</h:link>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+					<!-- </div> -->
+
+				</div>
+			</div>
+
+
+
+			<!-- </h:form> -->
+
+			<!-- Se PrimeFaces non viene usato nella Pagina bisogna caricare a mano jQuery -->
+			<!-- <h:outputScript library="jquery" name="jquery-1.9.1.min.js"></h:outputScript> -->
+
+
+			<!-- 			<h:outputScript>
+				var nowTemp = new Date();
+				var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+				var checkin = $('#txtDataInizio').datepicker({
+					onRender : function(date) {
+						return date.valueOf() < now.valueOf() ? 'disabled' : '';
+					}
+				}).on('changeDate', function(ev) {
+					if (ev.date.valueOf() > checkout.date.valueOf()) {
+						var newDate = new Date(ev.date)
+						newDate.setDate(newDate.getDate() + 1);
+						checkout.setValue(newDate);
+					}
+					checkin.hide();
+					$('#txtDataFine')[0].focus();
+				}).data('datepicker');
+				var checkout = $('#txtDataFine').datepicker({
+					onRender : function(date) {
+						return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+					}
+				}).on('changeDate', function(ev) {
+					checkout.hide();
+				}).data('datepicker');
+			</h:outputScript> -->
+
+		</ui:define>
+	</ui:composition>
+
+
+</body>
+</html>

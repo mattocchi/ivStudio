@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- EMBED -->
+		<class>it.attocchi.jpa2.entities.EntityMarks</class>
+		<class>it.attocchi.jpa2.entities.uuid.EntityMarksUUID</class>
+		<!-- CORE -->		
+		<class>it.attocchi.studio74.online.entities.Nominativo</class>
+		<class>it.attocchi.studio74.online.entities.Modulo</class>
+		<class>it.attocchi.studio74.online.entities.Linea</class>
+		<class>it.attocchi.studio74.online.entities.Consumo</class>
+		<class>it.attocchi.studio74.online.entities.Contratto</class>
+		<class>it.attocchi.studio74.online.entities.Nota</class>
+		<class>it.attocchi.studio74.online.entities.Licenza</class>
+		<class>it.attocchi.studio74.online.entities.VoceElenco</class>
+		<class>it.attocchi.studio74.online.entities.Postazione</class>
+
+		<validation-mode>NONE</validation-mode>
+		<properties>
+			<!-- MIRCO -->
+
+<!-- 			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/atreeflow_andritz" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" /> -->
+
+			<!-- SERVER -->
+<!-- 		
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql:///atreeflow" />
+			<property name="javax.persistence.jdbc.user" value="atreeflow" />
+			<property name="javax.persistence.jdbc.password" value="atreeflow" />
+ -->
+ 
+ 			<property name="hibernate.hbm2ddl.auto" value="update" />
+ 
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!-- CACHE -->
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+			<!-- LOG -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+			<!-- <property name="hibernate.ejb.entitymanager_factory_name" value="DEFAULT_PU" /> -->
+
+		</properties>
+	</persistence-unit>
+</persistence>

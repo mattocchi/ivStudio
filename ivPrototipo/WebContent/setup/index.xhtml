@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="menu">
+			<ui:include src="/templates/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- <h3>Clienti</h3> -->
+						<fieldset>
+							<legend>Setup</legend>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<h:messages layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-info" warnClass="alert alert-warn"></h:messages>
+				</div>
+
+
+				<div class="row-fluid">
+					<h:commandButton styleClass="btn" value="Avvia Setup" action="#{beanSetup.actionSetup }"></h:commandButton>
+					
+					<h:commandButton styleClass="btn" value="Crea dati Demo" action="#{beanSetup.actionDemo }"></h:commandButton>
+					
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

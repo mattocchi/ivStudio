@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="menu">
+			<!-- <ui:include src="/templates/menu.xhtml" /> -->
+		</ui:define>
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+
+					<!-- 						<h:commandLink id="btnFiltri" styleClass="#{beanModuli.filtri ? 'btn active' : 'btn'}" action="#{beanModuli.actionFiltri }">
+								<i class="fam-find"></i> Filtri Avanzati
+									<f:ajax execute="" render="" />
+							</h:commandLink> -->
+
+					<!-- Button to trigger modal -->
+					<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+					<a class="btn" onclick="$('#myModal').modal('toggle');">Test1</a>
+
+					<h:commandLink >
+<!-- 						<f:ajax onevent="" event="action" render="@form name" execute="@form output" >
+						</f:ajax> -->
+						
+						<!-- <f:param name="id" value="#{item.id }"></f:param> -->
+						<i class="icon-folder-open"></i>
+						<h:outputText value="Apri"></h:outputText>
+
+						<!-- <f:ajax onevent="function(data) { $('#myModal').modal('toggle') }" event="action" render="@form" execute="@form" listener="#{testAjax.actionEditItem }"> -->
+						<!-- <f:ajax onevent="function(data) { $('#myModal').modal('toggle') }" event="action" render="@form" execute="@form" > -->
+
+						<!-- 									<f:ajax onevent="function(data) { $('#myModal').modal('toggle') }" event="action" >
+											    <f:param value="#{10 }" name="id"></f:param>
+											</f:ajax> -->
+
+						<f:ajax onevent="function(data) { $('#myModal').modal('toggle') }" event="action"></f:ajax>
+
+					</h:commandLink>
+
+
+					<h:inputText id="name" value="#{testAjax.id }"></h:inputText>
+					<h:commandButton value="Welcome Me">
+						<f:ajax execute="name" render="output" />
+					</h:commandButton>
+
+					<h2>
+						<h:outputText id="output" value="#{testAjax.id }" />
+					</h2>
+
+				</div>
+
+				<!-- Modal -->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h3 id="myModalLabel">Modal header</h3>
+					</div>
+					<div class="modal-body">
+						<p>One fine body…</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						<button class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

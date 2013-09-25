@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough" xmlns:widget="http://java.sun.com/jsf/composite/widget">
+<head>
+</head>
+<body>
+
+	<ui:composition template="/templates/page.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container-fluid">
+
+				<div class="row-fluid">
+					<div class="span12">
+						<fieldset>
+							<legend>Postazioni</legend>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+
+					<h:messages id="messages" layout="list" styleClass="messagesList" errorClass="alert alert-error" infoClass="alert alert-success" warnClass="alert alert-warn"></h:messages>
+
+				</div>
+
+				<div class="row-fluid">
+					<div class="span6">
+						<div class="input-append">
+							<!-- <input class="input-medium" id="appendedInputButtons" type="text" /> -->
+							<h:inputText value="#{beanPostazione.filtro.semeRicerca }" styleClass="input-medium"></h:inputText>
+							<!-- <button class="btn" type="button">Cerca1</button> -->
+							<h:commandLink styleClass="btn" value="Cerca" action="#{beanPostazione.actionCerca }"></h:commandLink>
+						</div>
+					</div>
+
+					<div class="span6">
+						<div class="pull-right"></div>
+					</div>
+
+				</div>
+
+				<h:panelGroup id="rowFiltri">
+					<div class="row-fluid"></div>
+				</h:panelGroup>
+
+
+				<div class="row-fluid">
+					<div class="pull-right">
+						<widget:itemsnum backbean="#{beanPostazione}"></widget:itemsnum>
+					</div>
+				</div>
+
+				<div class="row-fluid">
+
+					<h:dataTable value="#{beanPostazione.elenco }" var="item" styleClass="table table-bordered table-striped table-hover">
+
+						<h:column>
+							<f:facet name="header">Cliente</f:facet>
+							<h:link outcome="/clienti/scheda" value="#{beanSessione.cliente(item.clienteId).ragioneSociale }">
+								<f:param name="id" value="#{item.clienteId }"></f:param>
+								<span class="muted"> #{beanSessione.cliente(item.clienteId).codice }</span>
+							</h:link>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Licenza Num</f:facet>
+							<h:outputText value="#{item.licenzaNumero }"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nome PC</f:facet>
+							<h:outputText value="#{item.nomePc }"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Sistema Operativo</f:facet>
+							<h:outputText value="#{item.sistemaOperativo }"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Utente</f:facet>
+							<h:outputText value="#{item.utente }"></h:outputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Autorizzato</f:facet>
+							<!-- 							<h:outputText styleClass="label label-success" value="Autorizzata" rendered="#{item.autorizzata }"></h:outputText>
+							<h:outputText styleClass="label label-important" value="Non Autorizzata" rendered="#{not item.autorizzata }"></h:outputText>
+ -->
+							<div class="make-switch switch-small" data-on="success" data-off="danger" data-on-label="Si" data-off-label="No	">
+								<h:selectBooleanCheckbox value="#{item.autorizzata }">
+									<f:ajax event="change" listener="#{beanPostazione.cambiaAutorizzazione(item.id) }" render=":mainForm:messages" />
+									<!-- <f:attribute name="user" value="#{user}" /> -->
+								</h:selectBooleanCheckbox>
+
+							</div>
+
+						</h:column>
+					</h:dataTable>
+					<!-- </div> -->
+
+					<!-- <widget:pagination backbean="#{beanClienti}" filter="#{beanPostazione.filtro }" actionPageNext="#{beanPostazione.actionPageNext}" actionPagePrev="#{beanPostazione.actionPagePrev}"></widget:pagination> -->
+					<widget:pagination backbean="#{beanClienti}" filter="#{beanPostazione.filtro }"></widget:pagination>
+
+					<!-- 					<h:commandLink value="Next" action="#{beanPostazione.actionPageNext}"></h:commandLink>
+					<h:commandLink value="Prev" action="#{beanPostazione.actionPagePrev}"></h:commandLink> -->
+
+					<!-- <div class="pagination pagination-centered">
+						<div class="pagination">
+							<ul>
+								<li>
+									<a href="#">&laquo;</a>
+								</li>
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<a href="#">5</a>
+								</li>
+								<li>
+									<a href="#">&raquo;</a>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+
+				</div>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
